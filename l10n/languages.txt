@@ -1,6 +1,7 @@
 en English
 eo Esperanto
 es Español
+fi Suomi
 fr Français
 he עברית
 it Italiano
