@@ -698,12 +698,18 @@ window.addEventListener('DOMContentLoaded', function() {
           logo.keywordAlias = function(s) {
             return data.interpreter.keywords[s];
           };
+          (function(aliases) {
+            Object.keys(aliases).forEach(function(alias) {
+              logo.keywordAliases[aliases[alias]] = alias;
+            });
+          }(data.interpreter.keywords));
         }
 
         if ('procedures' in data.interpreter) {
           (function(aliases) {
             Object.keys(aliases).forEach(function(alias) {
               logo.copydef(alias, aliases[alias]);
+              logo.procedureAliases[aliases[alias]] = alias;
             });
           }(data.interpreter.procedures));
         }

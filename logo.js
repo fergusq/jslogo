@@ -125,6 +125,11 @@ function LogoInterpreter(turtle, stream, savehook)
     return atom === match;
   }
 
+
+  // These objects contain procedure names in keys and aliases in values.
+  this.procedureAliases = {};
+  this.keywordAliases = {};
+
   // Returns a promise; calls the passed function with (loop, resolve,
   // reject). Calling resolve or reject (or throwing) settles the
   // promise, calling loop repeats.
@@ -1184,7 +1189,10 @@ function LogoInterpreter(turtle, stream, savehook)
       }
     }
 
-    var def = "to " + name;
+    var localizedTo = this.procedureAliases["to"] || "to";
+    var localizedEnd = (this.keywordAliases["END"] || "end").toLowerCase();
+
+    var def = localizedTo + " " + name;
 
     def += proc.inputs.map(function(i) {
       return ' :' + i;
@@ -1199,7 +1207,7 @@ function LogoInterpreter(turtle, stream, savehook)
 
     def += "\n";
     def += "  " + proc.block.map(defn).join(" ").replace(new RegExp(UNARY_MINUS + ' ', 'g'), '-');
-    def += "\n" + "end";
+    def += "\n" + localizedEnd;
 
     return def;
   };
