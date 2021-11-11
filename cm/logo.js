@@ -36,7 +36,7 @@ if (typeof CodeMirror !== 'undefined') {
           return (indent + 1 ) * size;
         case 'defn-vars':
         case 'defn-body':
-          if (/^END\b/i.test(textAfter))
+          if (/^(END|VALMIS)\b/i.test(textAfter))
             return indent * size;
           return (indent + 1 ) * size;
         default:
@@ -57,11 +57,11 @@ if (typeof CodeMirror !== 'undefined') {
         }
 
         if (state.state === 'normal') {
-          if (stream.match(/^TO\b/i, true)) {
+          if (stream.match(/^(TO|MITEN)\b/i, true)) {
             state.state = 'defn-name';
             return 'logo-defn-start';
           }
-          if (stream.match(/^END\b/i, true)) {
+          if (stream.match(/^(END|VALMIS)\b/i, true)) {
             return 'logo-error';
           }
         }
@@ -86,7 +86,7 @@ if (typeof CodeMirror !== 'undefined') {
 
         if (state.state === 'defn-body') {
 
-          if (stream.match(/^END\b/i, true)) {
+          if (stream.match(/^(END|VALMIS)\b/i, true)) {
             state.state = 'normal';
             return 'logo-defn-end';
           }
@@ -125,7 +125,7 @@ if (typeof CodeMirror !== 'undefined') {
           }
 
           // Special Words
-          if (stream.match(/^(TRUE|FALSE|ELSE)\b/i, true)) {
+          if (stream.match(/^(TRUE|FALSE|ELSE|JOO|EI|MUUTEN)\b/i, true)) {
             return 'logo-keyword';
           }
 
