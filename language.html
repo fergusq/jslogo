@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<title>Logo Language Guide</title>
+<title>Logo-kielen opas</title>
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -35,339 +35,345 @@ dd.example {
 
 <div>
 
-<p>The section numbers are per the <a target="_blank" href="https://www.cs.berkeley.edu/~bh/v2ch14/manual.html">Berkeley Logo Reference Manual</a> in Brian Harvey's <cite>Computer Science Logo Style volume 2: Advanced Techniques</cite> for ease
-of comparison.</p>
+<p>Osien numerointi on samoin kuin <a target="_blank" href="https://www.cs.berkeley.edu/~bh/v2ch14/manual.html">Berkeley Logo Reference Manualissa</a> Brian Harveyn <cite>Computer Science Logo Style volume 2: Advanced Techniquesissa</cite> vertailun helpottamiseksi.</p>
 
 <ol>
-  <li><a href="#types">Data Types and Syntax</a>
-  <li><a href="#sec2">Data Structure Primitives</a>
-  <li><a href="#sec3">Communication</a>
-  <li><a href="#sec4">Arithmetic</a>
-  <li><a href="#sec5">Logical Operations</a>
-  <li><a href="#sec6">Graphics</a>
-  <li><a href="#sec7">Workspace Management</a>
-  <li><a href="#sec8">Control Structures</a>
+  <li><a href="#types">Tietotyypit ja syntaksi</a>
+  <li><a href="#sec2">Tietorakennenprimitiivit</a>
+  <li><a href="#sec3">Viestintä</a>
+  <li><a href="#sec4">Aritmetiikka</a>
+  <li><a href="#sec5">Loogiset operaattorit</a>
+  <li><a href="#sec6">Grafiikka</a>
+  <li><a href="#sec7">Nimienhallinta</a>
+  <li><a href="#sec8">Ohjausrakenteet</a>
 </ol>
 
 
-<h3 id="types">Data Types and Syntax</h3>
+<h3 id="types">Tietotyypit ja syntaksi</h3>
 <dl>
-  <dt><code>"<var>word</var></code>
-  <dt><code>'<var>word</var></code>
-  <dt><code><var>number</var></code>
-  <dd>Word. (Quoted words are terminated by [](){} or whitespace, \ to escape.)
-  <dd class=example>show "hello</dd>
-  <dd class=example>show "hello\ logo</dd>
-  <dd class=example>show 12.34</dd>
+  <dt><code>"<var>sana</var></code>
+  <dt><code>'<var>sana</var></code>
+  <dt><code><var>sana</var></code>
+  <dd>Sana. (Ei voi sisältää merkkejä [](){} tai välejä, paitsi jos niiden edellä on \ eli kenoviiva.)
+  <dd class=example>tulosta "hei</dd>
+  <dd class=example>tulosta "hei\ logo</dd>
+  <dd class=example>tulosta 12.34</dd>
 
-  <dt><code>:<var>variable</var></code>
-  <dd>Input definition/variable reference
-  <dd class=example>show :name</dd>
+  <dt><code>:<var>muuttuja</var></code>
+  <dd>Syötteen määrittely/muuttujaviittaus
+  <dd class=example>tulosta :nimi</dd>
 
-  <dt><code>[ <var>word ...</var> ]</code>
-  <dd>List of words or lists, whitespace separated
-  <dd class=example>show [1 2 3]</dd>
+  <dt><code>[ <var>sana ...</var> ]</code>
+  <dd>Lista sanoja tai listoja eroteltuna välilyönneillä
+  <dd class=example>tulosta [1 2 3]</dd>
 
-  <dt><code>{ <var>word ...</var> }</code>
-  <dt><code>{ <var>word ...</var> }@<var>origin</var></code>
-  <dd>Array of words, whitespace separated
+  <dt><code>{ <var>sana ...</var> }</code>
+  <dt><code>{ <var>sana ...</var> }@<var>origin</var></code>
+  <dd>Taulukko sanoja välilyönnillä eroteltuna
   <dd class=example>show {1 2 3}</dd>
 
-  <dt><code> ( <var>expression</var> )</code>
-  <dd>Parenthesis can be used to group expressions
+  <dt><code> ( <var>lauseke</var> )</code>
+  <dd>Suluilla ryhmitellään lausekkeita
   <dd class=example>show ( 1 + 2 ) * 3</dd>
 
-  <dt><code><var>procedure</var> <var>input</var> ...</code>
-  <dd>Call procedure with default number of inputs
-  <dd class=example>show "hello</dd>
+  <dt><code><var>aliohjelma</var> <var>syöte</var> ...</code>
+  <dd>Kutsuu aliohjelmaa oletusmäärällä syötteitä
+  <dd class=example>tulosta "hei</dd>
 
-  <dt><code> ( <var>procedure</var> <var>input</var> ... )</code>
-  <dd>Call procedure with an arbitrary number of inputs
-  <dd class=example>(show "hello :name)</dd>
+  <dt><code> ( <var>aliohjelma</var> <var>syöte</var> ... )</code>
+  <dd>Kutsuu aliohjelmaa millä vain määrällä syötteitä
+  <dd class=example>(tulosta "hei :nimi)</dd>
 </dl>
 
-<h3 id="sec2">2. Data Structure Primitives</h3>
-<h4>2.1 Constructors</h4>
+<h3 id="sec2">2. Tietorakennekomennot</h3>
+<h4>2.1 Luominen</h4>
 
 <dl>
-  <dt><code>word <var>expr</var> <var>expr</var></code>
-  <dt><code>(word <var>expr</var> <var>...</var>)</code>
-  <dd>Concatenate two (or more) words into one word
-  <dd class=example>show (word "a "b "c)</dd>
+  <dt><code>sana <var>lauseke</var> <var>lauseke</var></code>
+  <dt><code>(sana <var>lauseke</var> <var>...</var>)</code>
+  <dd>Yhdistää kaksi (tai useampia) sanoja yhdeksi
+  <dd class=example>tulosta (sana "a "b "c)</dd>
 
-  <dt><code>list <var>thing1</var> <var>thing2</var></code>
-  <dt><code>(list <var>thing1</var> <var>thing2</var> ...)</code>
-  <dd>Create a new list from the inputs
-  <dd class=example>show (list 1+2 2+3 3+4)</dd>
+  <dt><code>lista <var>juttu1</var> <var>juttu2</var></code>
+  <dt><code>(lista <var>juttu1</var> <var>juttu2</var> ...)</code>
+  <dd>Luo syötteistä uuden listan
+  <dd class=example>tulosta (lista 1+2 2+3 3+4)</dd>
 
-  <dt><code>sentence thing1 thing2</code>
-  <dt><code>(sentence thing1 thing2 ...)</code>
-  <dt><code>se thing1 thing2</code>
-  <dt><code>(se thing1 thing2 ...)</code>
-  <dd>Create a new list from the inputs (if non-lists) or members of the inputs (if lists)
-  <dd class=example>show sentence [1 2 3] [and so on]</dd>
+  <dt><code>yhdistä juttu1 juttu2</code>
+  <dt><code>(yhdistä juttu1 juttu2 ...)</code>
+  <dt><code>yhd juttu1 juttu2</code>
+  <dt><code>(yhd juttu1 juttu2 ...)</code>
+  <dd>Luo uuden listan syötteistä (jos sanoja) tai syötteiden alkioista (jos listoja)
+  <dd class=example>tulosta yhdistä [1 2 3] [ja niin edelleen]</dd>
 
-  <dt><code>fput <var>thing</var> <var>list</var></code>
-  <dt><code>lput <var>thing</var> <var>list</var></code>
-  <dd>Outputs list, but with thing added as a new first/last item; if list is a word, concatenates
-  <dd class=example>show fput 0 [ 1 2 3 ]</dd>
-  <dd class=example>show fput "a "bcd</dd>
-  <dd class=example>show lput 4 [ 1 2 3 ]</dd>
-  <dd class=example>show lput "e "bcd</dd>
+  <dt><code>alkuun <var>juttu</var> <var>lista</var></code>
+  <dt><code>loppuun <var>juttu</var> <var>lista</var></code>
+  <dd>Palauttaa listan, jonka alkuun/loppuun on lisätty juttu. Jos listan sijasta syötteenä oli sana, yhdistää jutun sanan alkuun/loppuun.
+  <dd class=example>tulosta alkuun 0 [ 1 2 3 ]</dd>
 
-  <dt><code>array <var>size</var></code>
-  <dt><code>(array <var>size</var> <var>origin</var>)</code>
-  <dd>Create a new array. The default origin is 1.
-  <dd class=example>show array 10</dd>
+  <dd class=example>tulosta alkuun "a "bcd</dd>
+  <dd class=example>tulosta loppuun 4 [ 1 2 3 ]</dd>
+  <dd class=example>tulosta loppuun "e "bcd</dd>
 
-  <dt><code>mdarray [<var>dimensions</var> ...]</code>
-  <dt><code>(mdarray [<var>dimensions</var> ...] <var>origin</var>)</code>
-  <dd>Create a new multi-dimensional array. The default origin is 1.
-  <dd class=example>show mdarray [2 2]</dd>
+  <dt><code>rivi <var>koko</var></code>
+  <dt><code>(rivi <var>koko</var> <var>alku</var>)</code>
+  <dd>Luo uuden rivin. rivi alkaa oletuksena ykkösestä.
+  <dd class=example>tulosta rivi 10</dd>
 
-  <dt><code>listtoarray <var>list</var></code>
-  <dt><code>(listtoarray <var>list</var> <var>origin</var>)</code>
-  <dd>Create a new array populated by members of a list
-  <dd class=example>show listtoarray [ 1 3 5 7 ]</dd>
+  <dt><code>taulukko [<var>koot</var> ...]</code>
+  <dt><code>taulu [<var>koot</> ...]</code>
+  <dt><code>(taulukko [<var>koot</var> ...] <var>alku</var>)</code>
+  <dt><code>(taulu [<var>koot</var> ...] <var>alku</var>)</code>
+  <dd>Luo moniulotteisen taulukon. rivi alkaa oletuksena ykkösestä.
+  <dd class=example>tulosta taulukko [2 2]</dd>
 
-  <dt><code>arraytolist <var>array</var></code>
-  <dd>Create a new list populated by members of a array
-  <dd class=example>show arraytolist { 2 4 6 8 }</dd>
+  <dt><code>lista.riviksi <var>lista</var></code>
+  <dt><code>(listariviksi <var>lista</var> <var>alku</var>)</code>
+  <dd>Luo uuden taulukon listan pohjalta.
+  <dd class=example>tulosta listariviksi [ 1 3 5 7 ]</dd>
 
+  <dt><code>rivi.listaksi <var>rivi</var></code>
+  <dd>Luo uuden listan rivin pohjalta.
+  <dd class=example>tulosta rivi.listaksi { 2 4 6 8 }</dd>
+
+  <!--
   <dt><code>combine thing1 thing2</code>
   <dd>If thing2 is a word, like <code>word</code>; otherwise, like <code>fput</code>
   <dd class=example>show combine "a [b c]</dd>
+  -->
 
-  <dt><code>reverse <var>list</var></code>
-  <dd>Outputs a list with the items in reverse order; if input is a word, reverses characters
-  <dd class=example>show reverse [ 1 2 3 ]</dd>
-  <dd class=example>show reverse "abc</dd>
+  <dt><code>käännä <var>lista</var></code>
+  <dd>Palauttaa listan käänteisessä järjestyksessä; tai sanan kirjaimet käänteisessä järjestyksessä
+  <dd class=example>tulosta käännä [ 1 2 3 ]</dd>
+  <dd class=example>tulosta käännä "abc</dd>
 
+  <!--
   <dt><code>gensym</code>
   <dd>Outputs a unique string, e.g. <samp>G1</samp>, <samp>G2</samp>, etc.
   <dd class=example>show gensym</dd>
-</dl>
+  -->
 
-<h4>2.2 Data Selectors</h4>
+  </dl>
+
+
+<h4>2.2 Tiedon kerääminen</h4>
 <dl>
-  <dt><code>first <var>list</var></code>
-  <dt><code>last <var>list</var></code>
-  <dd>Outputs the first or last item (or character) from the list (or word), respectively
-  <dd class=example>show first [ 1 2 3 ]</dd>
-  <dd class=example>show first "abc</dd>
-  <dd class=example>show last [ 1 2 3 ]</dd>
-  <dd class=example>show last "abc</dd>
+  <dt><code>eka <var>lista</var></code>
+  <dt><code>vika <var>lista</var></code>
+  <dd>Antaa listan ensimmäisen tai viimeisen jäsenen.
+  <dd class=example>tulosta eka [ 1 2 3 ]</dd>
+  <dd class=example>tulosta eka "abc</dd>
+  <dd class=example>tulosta vika [ 1 2 3 ]</dd>
+  <dd class=example>tulosta vika "abc</dd>
 
-  <dt><code>firsts <var>listoflists</var></code>
-  <dd>Outputs a list of the first item (or character) of each sublist (or word)
-  <dd class=example>show firsts [ [1 2 3] [a b c] ]</dd>
-  <dd class=example>show firsts [ abc def ]</dd>
+  <dt><code>ekat <var>lista.listoja</var></code>
+  <dd>Antaa listan ensimmäisistä alkioista joukossa listoja.
+  <dd class=example>tulosta ekat [ [1 2 3] [a b c] ]</dd>
+  <dd class=example>tulosta ekat [ abc def ]</dd>
 
-  <dt><code>butfirst <var>list</var></code>
-  <dt><code>bf <var>list</var></code>
-  <dt><code>butlast <var>list</var></code>
-  <dt><code>bl <var>list</var></code>
-  <dd>Outputs the list (or word), except for the first/last item (or character)
-  <dd class=example>show butfirst [ 1 2 3 ]</dd>
-  <dd class=example>show butfirst "abc</dd>
-  <dd class=example>show butlast [ 1 2 3 ]</dd>
-  <dd class=example>show butlast "abc</dd>
+  <dt><code>ekatta <var>lista</var></code>
+  <dt><code>vikatta <var>lista</var></code>
+  <dd>Antaa listan arvot paitsi ensimmäisen tai viimeisen.
+  <dd class=example>tulosta ekatta [ 1 2 3 ]</dd>
+  <dd class=example>tulosta ekatta "abc</dd>
+  <dd class=example>tulosta vikatta [ 1 2 3 ]</dd>
+  <dd class=example>tulosta vikatta "abc</dd>
 
-  <dt><code>butfirsts <var>listoflists</var></code>
-  <dt><code>bfs <var>listoflists</var></code>
-  <dd>Outputs a list of sublists (or words) without the first item (or characters)
-  <dd class=example>show butfirsts [ [ 1 2 3 ] [ a b c ] ]</dd>
-  <dd class=example>show butfirsts [ abc def ]</dd>
+  <dt><code>ekoitta <var>lista.listoja</var></code>
+  <dt><code>ekoitta <var>lista.listoja</var></code>
+  <dd>Antaa listasta listoja uudet listat joista ensimmäiset jäsenet on otettu pois.
+  <dd class=example>tulosta ekoitta [ [ 1 2 3 ] [ a b c ] ]</dd>
+  <dd class=example>tulosta ekoitta [ abc def ]</dd>
 
-  <dt><code>item <var>index</var> <var>thing</var></code>
-  <dd>Outputs the indexth item of the list or array or word
-  <dd class=example>show item 2 [ 1 2 3 ]</dd>
-  <dd class=example>show item 2 "abc</dd>
+  <dt><code>kohta <var>indeksi</var> <var>juttu</var></code>
+  <dd>Antaa indeksin mukaisesti listasta, sanasta tai rivistä jäsenen.
+  <dd class=example>tulosta kohta 2 [ 1 2 3 ]</dd>
+  <dd class=example>tulosta kohta 2 "abc</dd>
 
-  <dt><code>mditem [<var>index</var> ...] <var>thing</var></code>
-  <dd>Outputs an item from a multi-dimensional array
-  <dd class=example>show mditem [2 1] {{a b} {c d}}</dd>
+  <dt><code>taulukon.kohta [<var>indeksi</var> ...] <var>juttu</var></code>
+  <dt><code>taulun.kohta [<var>indeksi</var> ...] <var>juttu</var></code>
+  <dd>Antaa taulukosta indeksin mukaisesti jäsenen.
+  <dd class=example>tulosta taulukon.kohta [2 1] {{a b} {c d}}</dd>
 
-  <dt><code>pick <var>list</var></code>
-  <dd>Outputs one item from a list (or word), at random
-  <dd class=example>show pick [ 1 2 3 ]</dd>
-  <dd class=example>show pick "abc</dd>
+  <dt><code>jokin <var>lista</var></code>
+  <dd>Antaa satunnaisen jäsenen listasta.
+  <dd class=example>tulosta jokin [ 1 2 3 ]</dd>
+  <dd class=example>tulosta jokin "abc</dd>
 
-  <dt><code>remove <var>thing</var> <var>list</var></code>
-  <dd>Outputs the list (or word) with any occurences of thing removed
-  <dd class=example>show remove "b [ a b c ]</dd>
-  <dd class=example>show remove "a "banana</dd>
+  <dt><code>paitsi <var>juttu</var> <var>lista</var></code>
+  <dd>Luo uuden listan alkuperäisen listan pohjalta, josta on otettu kaikki tietyt jutut pois.
+  <dd class=example>tulosta paitsi "b [ a b c ]</dd>
+  <dd class=example>tulosta paitsi "a "banana</dd>
 
-  <dt><code>remdup <var>list</var></code>
-  <dd>Outputs the list (or word) with duplicates removed
-  <dd class=example>show remdup [ 1 2 3 2 3 4 3 4 5 ]</dd>
-  <dd class=example>show remdup "banana</dd>
+  <dt><code>toistotta <var>list</var></code>
+  <dd>Luo uuden listan alkuperäisen pohjalta, josta on otettu toistuvat jäsenet pois.
+  <dd class=example>tulosta toistotta [ 1 2 3 2 3 4 3 4 5 ]</dd>
+  <dd class=example>tulosta toistotta "banana</dd>
 
-  <dt><code>quoted <var>thing</var></code>
+  <!--
+  <dt><code>quoted <var>juttu</var></code>
   <dd>Outputs thing with " prepended if a word, or just thing otherwise.
   <dd class=example>show quoted "abc</dd>
+  -->
 
-  <dt><code>split <var>thing</var> <var>list</var></code>
-  <dd>Outputs the list split into a list of lists (or list of words) wherever thing appears.
-  <dd class=example>show split "a "banana</dd>
-  <dd class=example>show split 3 [1 2 3 4 1 2 3 4]</dd>
+  <dt><code>jaa <var>juttu</var> <var>lista</var></code>
+  <dd>Luo uuden listan, jossa on alkuperäisen listan sisältö jaettuna osiin, aina kun listassa on ollut juttu.
+  <dd class=example>tulosta jaa "a "banana</dd>
+  <dd class=example>tulosta jaa 3 [1 2 3 4 1 2 3 4]</dd>
 
 </dl>
 
-<h4>2.3 Data Mutators</h4>
+<h4>2.3 Muokkaaminen</h4>
 <dl>
-  <dt><code>setitem <var>index</var> <var>array</var> <var>value</var></code>
-  <dd>Sets the indexth item of the array to value (circular arrays prevented)
-  <dd class=example>make "a { 1 2 3 }  setitem 2 :a "x  show :a</dd>
+  <dt><code>kohtaan <var>indeksi</var> <var>rivi</var> <var>arvo</var></code>
+  <dd>Asettaa riviin indeksin mukaiseen kohtaan arvon.
+  <dd class=example>olkoon "a { 1 2 3 }  kohtaan 2 :a "x  tulosta :a</dd>
 
-  <dt><code>mdsetitem [<var>index</var>...] <var>array</var> <var>value</var></code>
-  <dd>Sets an item in a multi-dimensional array to value (circular arrays prevented)
-  <dd class=example>make "a {{1 2} {3 4}}  mdsetitem [2 1] :a "x  show :a</dd>
+  <dt><code>taulukon.kohtaan [<var>indeksi</var>...] <var>taulukko</var> <var>arvo</var></code>
+  <dt><code>taulun.kohtaan [<var>indeksi</var>...] <var>taulu</var> <var>arvo</var></code>
+  <dd>Asettaa taulukkoon arvon.
+  <dd class=example>olkoon "a {{1 2} {3 4}}  taulukon.kohtaa [2 1] :a "x  tulosta :a</dd>
 
-  <dt><code>.setfirst <var>list</var> <var>value</var></code>
-  <dd>Sets the first item of the list to value
-  <dd class=example>make "a [ 1 2 3 ]  .setfirst :a "7  show :a</dd>
+  <dt><code>.ekaksi <var>lista</var> <var>arvo</var></code>
+  <dd>Tekee arvosta listan ensimmäisen jäsenen.
+  <dd class=example>olkoon "a [ 1 2 3 ]  .ekaksi :a "7  tulosta :a</dd>
 
-  <dt><code>.setbf <var>list</var> <var>value</var></code>
+  <!--
+  <dt><code>.lopuiksi <var>lista</var> <var>arvo</var></code>
   <dd>Sets the 'butfirst' of the list to the items in value (a list)
-  <dd class=example>make "a [ 1 2 3 ]  .setbf :a [ 4 9 ]  show :a</dd>
+  <dd class=example>olkoon "a [ 1 2 3 ]  .setbf :a [ 4 9 ]  show :a</dd>
+
 
   <dt><code>.setitem <var>index</var> <var>array</var> <var>value</var></code>
   <dd>Sets the indexth item of the array to value (circular arrays allowed)
-  <dd class=example>make "a { 1 2 3 }  setitem 2 :a "x  show :a</dd>
+  <dd class=example>olkoon "a { 1 2 3 }  setitem 2 :a "x  show :a</dd>
+  -->
 
-  <dt><code>push <var>stackname</var> <var>thing</var></code>
-  <dt><code>pop <var>stackname</var></code>
-  <dd>Push to/pop from a stack i.e. list variable. Stacks grow from the front. Works on words.
-  <dd class=example>make "s [ 2 1 ]  push "s 3  show :s  show pop "s</dd>
-  <dd class=example>make "s "ba  push "s "c  show :s  show pop "s</dd>
+  <dt><code>pinoon <var>listan.nimi</var> <var>juttu</var></code>
+  <dt><code>ota <var>listan.nimi</var></code>
+  <dd>Laittaa listan alkuun (pinon päälle) arvon. Toimii myös sanoilla. Ottaa listan lopusta arvon.
+  <dd class=example>olkoon "s [ 2 1 ] pinoon "s 3  tulosta :s  tulosta ota "s</dd>
+  <dd class=example>olkoon "s "ba  pinoon "s "c  tulosta :s  tulosta ota "s</dd>
 
-  <dt><code>queue <var>stackname</var> <var>thing</var></code>
-  <dt><code>dequeue <var>stackname</var></code>
-  <dd>Add/remove from a queue i.e. list variable, Queues grow from the end. Works on words.
-  <dd class=example>make "q [ 1 2 ]  queue "q 3  show :q  show dequeue "q</dd>
-  <dd class=example>make "q "ab  queue "q "c  show :q  show dequeue "q</dd>
+  <dt><code>jonoon <var>listan.nimi</var> <var>juttu</var></code>
+  <dt><code>ota <var>listan.nimi</var></code>
+  <dd>Laittaa listan loppuun (jonon päähän) arvon. Toimii myös sanoilla. Ottaa listan lopusta arvon. 
+  <dd class=example>olkoon "q [ 1 2 ]  jonoon "q 3  tulosta :q  tulosta ota "q</dd>
+  <dd class=example>olkoon "q "ab  jonoon "q "c  tulosta :q  tulosta ota "q</dd>
 
 </dl>
 
 <h4>2.4 Predicates</h4>
 <p>Predicates return 1 (true) or 0 (false) </p>
 <dl>
-  <dt><code>wordp <var>thing</var></code>
-  <dt><code>word? <var>thing</var></code>
-  <dt><code>listp <var>thing</var></code>
-  <dt><code>list? <var>thing</var></code>
-  <dt><code>arrayp <var>thing</var></code>
-  <dt><code>array? <var>thing</var></code>
-  <dt><code>numberp <var>thing</var></code>
-  <dt><code>number? <var>thing</var></code>
-  <dd>Test if thing is a word, list, array, or number respectively.
+  <dt><code>sanako <var>juttu</var></code>
+  <dt><code>listako <var>juttu</var></code>
+  <dt><code>rivikö <var>juttu</var></code>
+  <dt><code>lukuko <var>juttu</var></code>
+  <dd>Kokeilee onko juttu sana, lista, rivi tai luku.
 
-  <dt><code>emptyp <var>expr</var></code>
-  <dt><code>empty? <var>expr</var></code>
-  <dd>Test if thing is an empty list or empty string.
+  <dt><code>tyhjäkö <var>juttu</var></code>
+  <dd>Kokeilee onko juttu tyhjä lista tai sana.
 
-  <dt><code>equalp <var>expr</var> <var>expr</var></code>
-  <dt><code>equal? <var>expr</var> <var>expr</var></code>
-  <dt><code><var>expr</var> = <var>expr</var></code>
-  <dt><code>notequalp <var>expr</var> <var>expr</var></code>
-  <dt><code>notequal? <var>expr</var> <var>expr</var></code>
-  <dt><code><var>expr</var> &lt;&gt; <var>expr</var></code>
-  <dd>Equality/inequality tests. Compares strings, numbers, or lists (equal if length and all members are equal).
+  <dt><code>samatko <var>juttu1</var> <var>juttu2</var></code>
+  <dt><code><var>juttu1</var> = <var>juttu2</var></code>
+  <dt><code>eritkö <var>juttu1</var> <var>juttu2</var></code>
+  <dt><code><var>juttu1</var> &lt;&gt; <var>juttu2</var></code>
+  <dd>Kokeilee ovatko jutut sama vai eri. Toimii luvuille, listoille ja sanoille.
 
-  <dt><code>beforep <var>thing1</var> <var>thing2</var></code>
-  <dt><code>before? <var>thing1</var> <var>thing2</var></code>
-  <dd>Test string collation order.
+  <dt><code>aakkostuuko <var>juttu1</var> <var>juttu2</var></code>
+  <dd>Kokeilee onko juttu1 aakkosissa ennen juttu2:hta.
 
-  <dt><code>.eq <var>thing1</var> <var>thing2</var></code>
+    <!--
+  <dt><code>.eq <var>juttu1</var> <var>juttu2</var></code>
   <dd>Test if things have the same identity.
+  -->
 
-  <dt><code>memberp <var>thing</var> <var>list</var></code>
-  <dt><code>member? <var>thing</var> <var>list</var></code>
-  <dd>Test if thing is equal to any member of list.
+  <dt><code>löytyykö <var>juttu</var> <var>lista</var></code>
+  <dd>Kokeilee löytyykö juttu listasta.
 
-  <dt><code>substringp <var>thing1</var> <var>thing2</var></code>
-  <dt><code>substring? <var>thing1</var> <var>thing2</var></code>
-  <dd>Test if thing1 is a substring of thing2.
+  <dt><code>osako <var>juttu1</var> <var>juttu2</var></code>
+  <dd>Kokeilee onko juttu1 osa juttu2:hta.
 </dl>
 
-<h4>2.5 Queries</h4>
+<h4>2.5 Kyselyt</h4>
 <dl>
-  <dt><code>count <var>thing</var></code>
-  <dd>Outputs length of a list or number of characters in a string
-  <dd class=example>show count [ 1 2 3 ]</dd>
-  <dd class=example>show count "hello</dd>
+  <dt><code>pituus <var>juttu</var></code>
+  <dd>Kertoo jutun pituuden.
+  <dd class=example>tulosta pituus [ 1 2 3 ]</dd>
+  <dd class=example>tulosta pituus "hello</dd>
 
-  <dt><code>ascii <var>expr</var></code>
-  <dd>Outputs ASCII (actually, Unicode) code point for first character of string
-  <dd class=example>show ascii "abc</dd>
+  <dt><code>unicode <var>juttu</var></code>
+  <dd>Antaa jutun unicodessa.
+  <dd class=example>tulosta unicode "abc</dd>
 
-  <dt><code>char <var>expr</var></code>
-  <dd>Outputs Unicode character at specified code point
-  <dd class=example>show char 97</dd>
+  <dt><code>merkki <var>juttu</var></code>
+  <dd>Antaa unicodemerkin jutun perusteella.
+  <dd class=example>tulosta merkki 97</dd>
 
-  <dt><code>member <var>thing</var> <var>list</var></code>
-  <dd>Outputs the list (or word) from the first occurence of thing to the end, or empty list (or word)
-  <dd class=example>show member "a "banana</dd>
-  <dd class=example>show member 2 [1 2 3 4]</dd>
+  <dt><code>lähtien <var>juttu</var> <var>lista</var></code>
+  <dd>Luo uuden listan ensimmäisestä jutusta lähtien.
+  <dd class=example>tulosta lähtien "a "banana</dd>
+  <dd class=example>tulosta lähtien 2 [1 2 3 4]</dd>
 
-  <dt><code>uppercase <var>expr</var></code>
-  <dt><code>lowercase <var>expr</var></code>
-  <dd>Outputs string converted to upper/lowercase
-  <dd class=example>show uppercase "abc</dd>
-  <dd class=example>show lowercase "ABC</dd>
+  <dt><code>isolla <var>juttu</var></code>
+  <dt><code>pienellä <var>juttu</var></code>
+  <dd>Antaa jutun isoilla/pienillä kirjaimilla.
+  <dd class=example>tulosta uppercase "abc</dd>
+  <dd class=example>tulosta lowercase "ABC</dd>
 
+  <!--
   <dt><code>standout <var>expr</var></code>
   <dd>Outputs string with alphanumeric characters in bold
-  <dd class=example>show standout "ABCabc123</dd>
+  <dd class=example>tulosta standout "ABCabc123</dd>
+  -->
 
-  <dt><code>parse <var>word</var></code>
-  <dd>Outputs word parsed as a list.
-  <dd class=example>show parse "1+2</dd>
+  <dt><code>listaksi <var>sana</var></code>
+  <dd>Luo listan, jossa on erillisinä sanan kirjaimet.
+  <dd class=example>tulosta parse "1+2</dd>
 
+  <!--
   <dt><code>runparse <var>word</var></code>
   <dd>Outputs word parsed as instructions.
-  <dd class=example>show runparse "1+2</dd>
+  <dd class=example>tulosta runparse "1+2</dd>
+  -->
 
 </dl>
 
 
-<h3 id="sec3">3. Communication</h3>
+<h3 id="sec3">3. Kommunikaatio</h3>
 <h4>3.1 Transmitters</h4>
 <dl>
-  <dt><code>print <var>thing</var></code>
-  <dt><code>pr <var>thing</var></code>
-  <dt>(<code>print <var>thing1</var> <var>thing2</var> ...)</code>
-  <dt>(<code>pr <var>thing1</var> <var>thing2</var> ...)</code>
-  <dd>Print inputs to the text screen, separated by spaces, and followed by a newline.
-  Square brackets are only put around sublists.
-  <dd class=example>print "hello</dd>
+  <dt><code>sano <var>juttu</var></code>
+  <dt>(<code>sano <var>juttu1</var> <var>juttu2</var> ...)</code>
+  <dd>Sanoo jutut tekstikenttään. Ei tulosta listojen ja rivien sulkeita.
+  <dd class=example>sano "moikka</dd>
 
-  <dt><code>type <var>thing</var></code>
-  <dt>(<code>type <var>thing1</var> <var>thing2</var> ...)</code>
-  <dd>Like <code>print</code> but with no trailing newline.
-  <dd class=example>type "hel  type "lo</dd>
+  <dt><code>sanoalku <var>juttu</var></code>
+  <dt>(<code>sanoalku <var>juttu1</var> <var>juttu2</var> ...)</code>
+  <dd>Kuten <code>sano</code>, mutta perässä ei ole rivinvaihtoa.
+  <dd class=example>sanoalku "moik  sano "ka</dd>
 
-  <dt><code>show <var>thing</var></code>
-  <dt>(<code>show <var>thing1</var> <var>thing2</var> ...)</code>
-  <dd>Like <code>print</code> but with square brackets around list inputs.
-  <dd class=example>show "hello</dd>
+  <dt><code>tulosta <var>juttu</var></code>
+  <dt>(<code>tulosta <var>juttu1</var> <var>juttu2</var> ...)</code>
+  <dd>Kuten <code>sano</code>, mutta listojen ja rivien sulut jäävät.
+  <dd class=example>tulosta "moikka</dd>
 </dl>
 
 
 <h4>3.2 Receivers</h4>
 <dl>
-  <dt><code>readlist</code>
-  <dt><code>(readlist <var>promptstr</var>)</code>
-  <dd>Prompt the user for a line of input. The result is a list of words.
-  <dd class=example>show readlist</dd>
-  <dd class=example>make "colors (readlist [Type some colors:])  show :colors</dd>
+  <dt><code>lue</code>
+  <dt><code>(lue <var>kehote</var>)</code>
+  <dd>Kehota käyttäjää kirjoittamaan tekstiä. Tekstistä tulee lista.
+  <dd class=example>tulosta lue</dd>
+  <dd class=example>olkoon "värit (lue [Kirjoita joitain värejä:])  tulosta :värit</dd>
 
-  <dt><code>readword</code>
-  <dt><code>(readword <var>promptstr</var>)</code>
-  <dd>Prompt the user for a line of input. The result (including spaces) is the single word output.
-  <dd class=example>show readword</dd>
-  <dd class=example>make "name (readword [What is your name?])  show :name</dd>
+  <dt><code>luesana</code>
+  <dt><code>(luesana <var>kehote</var>)</code>
+  <dd>Kehota käyttäjää kirjoittamaan. Tekstistä tulee yksi sana.
+  <dd class=example>tulosta luesana</dd>
+  <dd class=example>olkoon "nimi (luesana [Mikä nimesi on?])  tulosta :nimi</dd>
 </dl>
 
 <!--
@@ -376,166 +382,163 @@ of comparison.</p>
 </dl>
 -->
 
-<h4>3.4 Terminal Access</h4>
+<h4>3.4 Tektin tuottaminen
+
+</h4>
 <dl>
-  <dt><code>cleartext</code>
-  <dt><code>ct</code>
-  <dd>Clear the text screen.
+  <dt><code>tekstipois</code>
+  <dd>Tyhjentää tekstikentän.
 
-  <dt><code>settextcolor <var>color</var></code>
-  <dd>Change the text color.
+  <dt><code>tekstinväriksi <var>väri</var></code>
+  <dd>Muuttaa tekstin väriä.
 
-  <dt><code>textcolor</code>
-  <dd>Output the current text color.
+  <dt><code>tekstinväri</code>
+  <dd>Antaa tekstin värin.
 
-  <dt><code>increasefont</code>
-  <dt><code>decreasefont</code>
-  <dd>Increase/decrease the text size.
+  <dt><code>teksti.isommaksi</code>
+  <dt><code>teksti.pienemmäksi</code>
+  <dd>Muuta tekstin kokoa.
 
-  <dt><code>settextsize <var>height</var></code>
-  <dd>Change the text size (in pixels).
+  <dt><code>tekstinkooksi <var>korkeus</var></code>
+  <dd>Muuttaa tekstin kokoa (pikseleissä).
 
-  <dt><code>textsize</code>
-  <dd>Output the current text size (in pixels).
+  <dt><code>tekstinkoko</code>
+  <dd>Antaa tekstin nykyisen koon (pikseleissä).
 
-  <dt><code>setfont <var>name</var></code>
-  <dd>Change the text font.
+  <dt><code>fontiksi <var>name</var></code>
+  <dd>Muuttaa fonttia.
 
-  <dt><code>font</code>
-  <dd>Output the current text font.
+  <dt><code>fontti</code>
+  <dd>Kertoo nykyisen fontin.
 </dl>
 
-<h3 id="sec4">4. Arithmetic</h3>
-<h4>4.1 Numeric Operations</h4>
-<p>Inputs are numbers or numeric expressions, output is a number.</p>
+<h3 id="sec4">4. Laskeminen</h3>
+<h4>4.1 Numeeriset operaatiot</h4>
+<p>Syöte on numeroita ja ulostulo on yksi numero</p>
 
 <dl>
-  <dt><code>sum <var>expr</var> <var>expr</var></code>
-  <dt><code>(sum <var>expr</var> <var>...</var>)</code>
-  <dt><code><var>expr</var> + <var>expr</var></code>
-  <dt><code>difference <var>expr</var> <var>expr</var></code>
-  <dt><code><var>expr</var> - <var>expr</var></code>
-  <dt><code>product <var>expr</var> <var>expr</var></code>
-  <dt><code>(product <var>expr</var> <var>...</var>)</code>
-  <dt><code><var>expr</var> * <var>expr</var></code>
-  <dt><code>quotient <var>expr</var> <var>expr</var></code>
-  <dt><code>(quotient <var>expr</var>)</code>
-  <dt><code><var>expr</var> / <var>expr</var></code>
-  <dt><code>power <var>expr</var> <var>expr</var></code>
-  <dt><code><var>expr</var> ^ <var>expr</var></code>
+  <dt><code>summa <var>luku1</var> <var>luku2</var></code>
+  <dt><code>(summa <var>luku1</var> <var>...</var>)</code>
+  <dt><code><var>luku1</var> + <var>luku2</var></code>
+  <dt><code>erotus <var>luku1</var> <var>luku2</var></code>
+  <dt><code><var>luku1</var> - <var>luku2</var></code>
+  <dt><code>tulo <var>luku1</var> <var>luku2</var></code>
+  <dt><code>(tulo <var>luku1</var> <var>...</var>)</code>
+  <dt><code><var>luku1</var> * <var>luku2</var></code>
+  <dt><code>osamäärä <var>luku</var> <var>luku</var></code>
+  <dt><code>(osamäärä <var>luku1</var> <var>luku2</var>)</code>
+  <dt><code><var>luku1</var> / <var>luku2</var></code>
+  <dt><code>potenssi <var>luku1</var> <var>luku2</var></code>
+  <dt><code><var>luku1</var> ^ <var>luku2</var></code>
   <dd>
-      Add, subtract, multiply, divide, and raise-to-the-power-of respectively.
-      A single input to quotient returns the reciprocal.
+    Laskevat summan, erotuksen, tulon tai osamäärän luvuille.
 
-  <dt><code>remainder <var>expr</var> <var>expr</var></code>
-  <dt><code><var>expr</var> % <var>expr</var></code>
-  <dt><code>modulo <var>expr</var> <var>expr</var></code>
+  <dt><code>jakojäännös <var>luku1</var> <var>luku2</var></code>
+  <dt><code><var>luku1</var> % <var>luku2</var></code>
+  <dt><code>modulo <var>luku1</var> <var>luku2</var></code>
   <dd>
-    Outputs the remainder (modulus). For <code>remainder</code> and <code>%</code>
-    the result has the same sign as the first input; for <code>modulo</code> the
-    result has the same sign as a the second input.
+Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina positiivisen jakojäännöksen.
 
-  <dt><code>minus <var>expr</var></code>
-  <dt><code>- <var>expr</var></code>
+  <dt><code>miinus <var>luku</var></code>
+  <dt><code>- <var>luku</var></code>
   <dd>
-    Unary minus sign must begin a top-level expression, follow an infix
-    operator, or have a leading space and no trailing space.
+    Muuttaa luvun etumerkkiä.
+  <dt><code>itseisarvo <var>luku</var></code>
+    <dt><code>its <var>luku</var></code>
+  <dd>Antaa luvun itseisarvon.
 
-  <dt><code>abs <var>num</var></code>
-  <dd>Absolute value
+  <dt><code>kokonaisluku <var>luku</var></code>
+  <dt><code>kok <var>luku</var></code>
+  <dd> Poistaa luvun desimaaliosan jättäen vain kokonaislukuosan. 
+  <dt><code>pyöristä <var>luku</var></code>
+  <dd>Pyöristää lähimpään kokonaislukuun (5 pyöristyy aina ylöspäin).
 
-  <dt><code>int <var>num</var></code>
-  <dt><code>round <var>num</var></code>
-  <dd>Truncate or round a number, respectively.
+  <dt><code>neliöjuuri <var>luku</var></code>
+  <dt><code>neju <var>luku</var></code>
+  <dt><code>exp <var>luku</var></code>
+  <dt><code>log10 <var>luku</var></code>
+  <dt><code>lg <var>luku</var></code>
+  <dt><code>ln <var>luku</var></code>
+  <dd>Neliöjuuri, <i>e:n</i> potenssi, kymmenkantainen logartimi (lg) ja luonnollinen logaritmi (ln).
 
-  <dt><code>sqrt <var>expr</var></code>
-  <dt><code>exp <var>expr</var></code>
-  <dt><code>log10 <var>expr</var></code>
-  <dt><code>ln <var>expr</var></code>
-  <dd>Square root, <i>e</i> to the power of, common logarithm, and natural logarithm, respectively.
-
-  <dt><code>arctan <var>expr</var></code>
+  <dt><code>arctan <var>luku</var></code>
   <dt><code>(arctan <var>x</var> <var>y</var>)</code>
-  <dt><code>sin <var>expr</var></code>
-  <dt><code>cos <var>expr</var></code>
-  <dt><code>tan <var>expr</var></code>
-  <dd>The usual trig functions. Angles are in degrees.
+  <dt><code>sin <var>luku</var></code>
+  <dt><code>cos <var>luku</var></code>
+  <dt><code>tan <var>luku</var></code>
+  <dd>Trigonometriset funktiot asteille.
 
-  <dt><code>radarctan <var>expr</var></code>
+  <dt><code>radarctan <var>luku</var></code>
   <dt><code>(radarctan <var>x</var> <var>y</var>)</code>
-  <dt><code>radsin <var>expr</var></code>
-  <dt><code>radcos <var>expr</var></code>
-  <dt><code>radtan <var>expr</var></code>
-  <dd>The usual trig functions. Angles are in radians.
+  <dt><code>radsin <var>luku</var></code>
+  <dt><code>radcos <var>luku</var></code>
+  <dt><code>radtan <var>luku</var></code>
+  <dd>Trigonometriset funktiot radiaaneille.
 
-  <dt><code>iseq <var>first</var> <var>last</var></code>
-  <dd>Outputs a list with integers from <var>first</var> to <var>last</var>, inclusive
-  <dd class=example>show iseq 1 10</dd>
+  <dt><code>luettele <var>eka</var> <var>vika</var></code>
+  <dd>Antaa listan lukuja <var>ekasta</var> <var>vikaan</var>. Lista on lukujen määrittämä suljettu väli.
+  <dd class=example>tulosta luettele 1 10</dd>
 
-  <dt><code>rseq <var>first</var> <var>last</var> <var>count</var></code>
-  <dd>Outputs a list of <var>count</var> numbers from <var>first</var> to <var>last</var>, inclusive
-  <dd class=example>show rseq 1 9 5</dd>
+  <dt><code>luettele.osa <var>eka</var> <var>vika</var> <var>montako</var></code>
+  <dd>Antaa listan, jossa on <var>montako</var> lukua tasaisin välein väliltä <var>ekasta</var> <var>vikaan</var>. Välin päätepisteet kuuluvat listaan.
+  <dd class=example>tulosta luettele.osa 1 9 5</dd>
 </dl>
 
-<h4>4.2 Numeric Predicates</h4>
+<h4>4.2 Lukujen vertailut</h4>
 <dl>
-  <dt><code>lessp <var>expr</var> <var>expr</var></code>
-  <dt><code>less? <var>expr</var> <var>expr</var></code>
-  <dt><code><var>expr</var> &lt; <var>expr</var></code>
+  <dt><code>pienempikö <var>luku1</var> <var>luku2</var></code>
+  <dt><code><var>luku1</var> &lt; <var>luku2</var></code>
 
-  <dt><code>greaterp <var>expr</var> <var>expr</var></code>
-  <dt><code>greater? <var>expr</var> <var>expr</var></code>
-  <dt><code><var>expr</var> &gt; <var>expr</var></code>
+  <dt><code>suurempiko <var>luku1</var> <var>luku2</var></code>
+  <dt><code><var>luku1</var> &gt; <var>luku2</var></code>
 
-  <dt><code>lessequalp <var>expr</var> <var>expr</var></code>
-  <dt><code>lessequal? <var>expr</var> <var>expr</var></code>
-  <dt><code><var>expr</var> &lt;= <var>expr</var></code>
+  <dt><code>pienempi.tai.yhtäsuuriko <var>luku1</var> <var>luku2</var></code>
+  <dt><code><var>luku1</var> &lt;= <var>luku2</var></code>
 
-  <dt><code>greaterequalp <var>expr</var> <var>expr</var></code>
-  <dt><code>greaterequal? <var>expr</var> <var>expr</var></code>
-  <dt><code><var>expr</var> &gt;= <var>expr</var></code>
+  <dt><code>suurempi.tai.yhtäsuuriko <var>luku1</var> <var>luku2</var></code>
+  <dt><code><var>luku1</var> &gt;= <var>luku2</var></code>
 
-  <dd>Less than, greater than, less than or equal to, greater than or equal to,
-  respectively. Inputs are numbers or numeric expressions, output is 1 (true) or 0 (false).
+  <dd>Kokeilee onko luku1 pienempi, suurempi, pienempi tai yhtäsuuri tai suurempi tai yhtäsuuri kuin luku2. Palauttaa joko joo (1) tai ei (0).
 </dl>
 
-<h4>4.3 Random Numbers</h4>
+<h4>4.3 Satunnaisluvut</h4>
 <dl>
-  <dt><code>random <var>expr</var></code>
-  <dt><code>(random <var>start</var> <var>end</var>)</code>
-  <dd>Outputs a random number from 0 through one less than <var>expr</var>, or from start to end inclusive.
-  <dd class=example>show random 10</dd>
-  <dd class=example>show (random 1 6)</dd>
+  <dt><code>satunnainen <var>luku</var></code>
+  <dt><code>sat <var>luku</var></code>
+  <dt><code>(satunnainen <var>alku</var> <var>loppu</var>)</code>
+    <dt><code>(sat <var>alku</var> <var>loppu</var>)</code>
+  <dd>Antaa luvun nollasta <var>lukua</var> yhtä pienempään lukuun, tai alusta loppuun.
+  <dd class=example>tulosta satunnainen 10</dd>
+  <dd class=example>tulosta (satunnainen 1 6)</dd>
 
 
-  <dt><code>rerandom</code>
-  <dt>(<code>rerandom <var>expr</var>)</code>
-  <dd>Reseeds the random number generator, either to a fixed value or the specified seed.
+  <dt><code>satunnaista</code>
+  <dt>(<code>satunnaista <var>luku</var>)</code>
+  <dd>Asettaa satunnaislukugeneraattorin uuteen kohtaan tai johonkin tiettyyn arvoon.
 </dl>
 
 <h4>4.4 Print Formatting</h4>
 <dl>
-  <dt><code>form <var>expr</var> <var>width</var> <var>precision</var></code>
-  <dd>Outputs a formatted string with the result of a numeric expression with <var>precision</var> decimal places and
-  padded on the left with spaces (if necessary) to be at least <var>width</width> characters long.
-  <dd class=example>show form 1/3 10 3</dd>
+  <dt><code>sanaksi <var>luku</var> <var>pituus</var> <var>tarkkuus</var></code>
+  <dd> Luo uuden sanan luvun perusteella annetulla desimaalitarkkuudella.
+  <dd class=example>tulosta sanaksi 1/3 10 3</dd>
 </dl>
 
 <h4>4.5 Bitwise Operations</h4>
 <dl>
-  <dt><code>bitand <var>expr</var> <var>expr</var></code>
-  <dt><code>(bitand <var>expr</var> ...)</code>
-  <dt><code>bitor <var>expr</var> <var>expr</var></code>
-  <dt><code>(bitor <var>expr</var> ...)</code>
-  <dt><code>bitxor <var>expr</var> <var>expr</var></code>
-  <dt><code>(bitxor <var>expr</var> ...)</code>
-  <dt><code>bitnot <var>expr</var></code>
+  <dt><code>bitand <var>luku</var> <var>luku</var></code>
+  <dt><code>(bitand <var>luku</var> ...)</code>
+  <dt><code>bitor <var>luku</var> <var>luku</var></code>
+  <dt><code>(bitor <var>luku</var> ...)</code>
+  <dt><code>bitxor <var>luku</var> <var>luku</var></code>
+  <dt><code>(bitxor <var>luku</var> ...)</code>
+  <dt><code>bitnot <var>luku</var></code>
   <dd>Bitwise and, or, exclusive-or, and not, respectively.
 
-  <dt><code>ashift <var>expr</var> <var>bitcount</var></code>
+  <dt><code>ashift <var>luku</var> <var>bitcount</var></code>
   <dd>Arithmetic bit shift. If bitcount is negative, shifts to the right, preserving sign.
 
-  <dt><code>lshift <var>expr</var> <var>bitcount</var></code>
+  <dt><code>lshift <var>luku</var> <var>bitcount</var></code>
   <dd>Logical bit shift. If bitcount is negative, shifts to the right, zero-filling.
 </dl>
 
@@ -546,15 +549,15 @@ of comparison.</p>
   <dt><code>false</code>
   <dd>Outputs 0
 
-  <dt><code>and <var>expr</var> <var>expr</var></code>
-  <dt><code>(and <var>expr</var> <var>...</var>)</code>
-  <dt><code>or  <var>expr</var> <var>expr</var></code>
-  <dt><code>(or <var>expr</var> <var>...</var>)</code>
-  <dt><code>xor <var>expr</var> <var>expr</var></code>
-  <dt><code>(xor <var>expr</var> <var>...</var>)</code>
-  <dt><code>not <var>expr</var></code>
+  <dt><code>and <var>juttu</var> <var>juttu</var></code>
+  <dt><code>(and <var>luku</var> <var>...</var>)</code>
+  <dt><code>or  <var>juttu</var> <var>juttu</var></code>
+  <dt><code>(or <var>juttu</var> <var>...</var>)</code>
+  <dt><code>xor <var>juttu</var> <var>juttu</var></code>
+  <dt><code>(xor <var>juttu</var> <var>...</var>)</code>
+  <dt><code>not <var>juttu</var></code>
   <dd>Logical "and", "or", "exclusive-or", and "not", respectively.
-  Inputs are numbers or numeric expressions, output is 1 (true) or 0 (false).
+  Inputs are numbers or numeric juttuessions, output is 1 (true) or 0 (false).
 </dl>
 
 <h3 id="sec6">6. Graphics</h3>
@@ -563,36 +566,36 @@ of comparison.</p>
 
 <h4>6.1 Turtle Motion</h4>
 <dl>
-  <dt><code>forward <var>expr</var></code>
-  <dt><code>fd <var>expr</var></code>
-  <dd>Move turtle forward <var>expr</var> pixels
+  <dt><code>forward <var>luku</var></code>
+  <dt><code>fd <var>luku</var></code>
+  <dd>Move turtle forward <var>luku</var> pixels
   <dd class=example>fd 100</dd>
 
-  <dt><code>back <var>expr</var></code>
-  <dt><code>bk <var>expr</var></code>
-  <dd>Move turtle backward <var>expr</var> pixels
+  <dt><code>back <var>luku</var></code>
+  <dt><code>bk <var>luku</var></code>
+  <dd>Move turtle backward <var>luku</var> pixels
   <dd class=example>bk 100</dd>
 
-  <dt><code>left <var>expr</var></code>
-  <dt><code>lt <var>expr</var></code>
-  <dd>Rotate <var>expr</var> degrees counterclockwise
+  <dt><code>left <var>luku</var></code>
+  <dt><code>lt <var>luku</var></code>
+  <dd>Rotate <var>luku</var> degrees counterclockwise
   <dd class=example>lt 90</dd>
 
-  <dt><code>right <var>expr</var></code>
-  <dt><code>rt <var>expr</var></code>
-  <dd>Rotate <var>expr</var> degrees clockwise
+  <dt><code>right <var>luku</var></code>
+  <dt><code>rt <var>luku</var></code>
+  <dd>Rotate <var>luku</var> degrees clockwise
   <dd class=example>rt 90</dd>
 
-  <dt><code>setpos [ <var>expr</var> <var>expr</var> ]</code>
-  <dt><code>setxy <var>expr</var> <var>expr</var></code>
-  <dt><code>setx <var>expr</var></code>
-  <dt><code>sety <var>expr</var></code>
+  <dt><code>setpos [ <var>luku</var> <var>luku</var> ]</code>
+  <dt><code>setxy <var>luku</var> <var>luku</var></code>
+  <dt><code>setx <var>luku</var></code>
+  <dt><code>sety <var>luku</var></code>
   <dd>Move turtle to the specified location
   <dd class=example>setpos [ 100 -100 ]</dd>
   <dd class=example>setxy -100 100</dd>
 
-  <dt><code>setheading <var>expr</var></code>
-  <dt><code>seth <var>expr</var></code>
+  <dt><code>setheading <var>luku</var></code>
+  <dt><code>seth <var>luku</var></code>
   <dd>Rotate the turtle to the specified heading
   <dd class=example>setheading 45</dd>
 
@@ -610,19 +613,19 @@ of comparison.</p>
   <dt><code>xcor</code>
   <dt><code>ycor</code>
   <dd>Outputs the current turtle position as [ x y ], x or y respectively
-  <dd class=example>show pos</dd>
+  <dd class=example>tulosta pos</dd>
 
   <dt><code>heading</code>
   <dd>Outputs the current turtle heading
-  <dd class=example>show heading</dd>
+  <dd class=example>tulosta heading</dd>
 
-  <dt><code>towards [ <var>expr</var> <var>expr</var> ]</code>
+  <dt><code>towards [ <var>luku</var> <var>luku</var> ]</code>
   <dd>Outputs the heading towards the specified [ x y ] coordinates
-  <dd class=example>show towards [ 0 0 ]</dd>
+  <dd class=example>tulosta towards [ 0 0 ]</dd>
 
   <dt><code>scrunch</code>
   <dd>Outputs the current graphics scaling factors
-  <dd class=example>show scrunch</dd>
+  <dd class=example>tulosta scrunch</dd>
 </dl>
 
 <h4>6.3 Turtle and Window Control</h4>
@@ -864,26 +867,26 @@ of comparison.</p>
 
 <h4>7.2 Variable Definition</h4>
 <dl>
-  <dt><code>make <var>varname</var> <var>expr</var></code>
+  <dt><code>olkoon <var>varname</var> <var>expr</var></code>
   <dd>Update a variable or define a new global variable. The variable name must
   be quoted
-  <dd class=example>make "myvar 5</dd>
+  <dd class=example>olkoon "myvar 5</dd>
 
   <dt><code>name <var>expr</var> <var>varname</var></code>
-  <dd>Like <code>make</code> but with the inputs reversed
+  <dd>Like <code>olkoon</code> but with the inputs reversed
   <dd class=example>name 5 "myvar</dd>
 
   <dt><code>local <var>varname</var></code>
   <dt><code>(local <var>varname</var> ...)</code>
-  <dd>A subsequent <code>make</code> will create the variable(s) in the local scope instead of the global scope
+  <dd>A subsequent <code>olkoon</code> will create the variable(s) in the local scope instead of the global scope
   <dd class=example>local "myvar</dd>
 
-  <dt><code>localmake <var>varname</var> <var>expr</var></code>
-  <dd>Define a variable in the local scope (shortcut for <code>local</code> then <code>make</code>
-  <dd class=example>localmake "myvar 5</dd>
+  <dt><code>localolkoon <var>varname</var> <var>expr</var></code>
+  <dd>Define a variable in the local scope (shortcut for <code>local</code> then <code>olkoon</code>
+  <dd class=example>localolkoon "myvar 5</dd>
 
-  <dt><code>thing <var>varname</var></code>
-  <dd>Outputs the value of variable. <code>:foo</code> is a shortcut for <code>thing "foo</code>
+  <dt><code>juttu <var>varname</var></code>
+  <dd>Outputs the value of variable. <code>:foo</code> is a shortcut for <code>juttu "foo</code>
   <dd class=example>show thing "myvar</dd>
 
   <dt><code>global <var>varname</var></code>
@@ -1055,7 +1058,7 @@ of comparison.</p>
   <dt><code>forever [ <var>statements ...</var> ]</code>
   <dd>Repeat statements forever. Used inside a user-defined procedure
   that terminates with <code>output</code>, <code>stop</code> or <code>bye</code>
-  <dd class=example>forever [ make "n random 100  show :n  if :n == 0 [ bye ] ]</dd>
+  <dd class=example>forever [ olkoon "n random 100  show :n  if :n == 0 [ bye ] ]</dd>
 
   <dt><code>repcount</code>
   <dt><code>#</code>
@@ -1120,7 +1123,7 @@ of comparison.</p>
 
   <dt><code>ignore <var>expr</var></code>
   <dd>Evaluate and ignore results of the expression
-  <dd class=example>make "q [ 1 2 3 ]  ignore dequeue "q</dd>
+  <dd class=example>olkoon "q [ 1 2 3 ]  ignore dequeue "q</dd>
 
   <dt><code>` <var>list</var></code></dt>
   <dd>Outputs the list with substitutions:
@@ -1132,7 +1135,7 @@ of comparison.</p>
     </ul>
   </dd>
   <dd class=example>show `[a b ,[bf [c d e]] f ,@[bf [g h i]]]</dd>
-  <dd class=example>make "v "x  show `[",:v :,:v]</dd>
+  <dd class=example>olkoon "v "x  show `[",:v :,:v]</dd>
 
   <dt><code>for <var>controllist</var> [ <var>statements ...</var>]</code>
   <dd>Typical <code>for</code> loop. The <var>controllist</var> specifies three or four members:
@@ -1149,7 +1152,7 @@ of comparison.</p>
   <dt><code>do.while [ <var>statements ...</var>] <var>expr</var></code>
   <dt><code>do.while [ <var>statements ...</var>] [<var>expr</var>]</code>
   <dd>Runs the specified statements at least once, and repeats while the expression is non-zero (true).
-  <dd class=example>do.while [ make "a random 10  show :a ] :a < 8</dd>
+  <dd class=example>do.while [ olkoon "a random 10  show :a ] :a < 8</dd>
 
   <dt><code>while <var>expr</var> [ <var>statements ...</var>]</code>
   <dt><code>while [<var>expr</var>] [ <var>statements ...</var>]</code>
@@ -1159,7 +1162,7 @@ of comparison.</p>
   <dt><code>do.until [ <var>statements ...</var>] <var>expr</var></code>
   <dt><code>do.until [ <var>statements ...</var>] [<var>expr</var>]</code>
   <dd>Runs the specified statements at least once, and repeats while the expression is zero (false).
-  <dd class=example>do.until [ make "a random 10  show :a ] :a < 8</dd>
+  <dd class=example>do.until [ olkoon "a random 10  show :a ] :a < 8</dd>
 
   <dt><code>until <var>expr</var> [ <var>statements ...</var>]</code>
   <dt><code>until [<var>expr</var>] [ <var>statements ...</var>]</code>
