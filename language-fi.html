@@ -263,8 +263,8 @@ dd.example {
 
 </dl>
 
-<h4>2.4 Predicates</h4>
-<p>Predicates return 1 (true) or 0 (false) </p>
+<h4>2.4 Kokeilut</h4>
+<p>Kokeilu palauttaa joko 1 (joo) tai 0 (ei) </p>
 <dl>
   <dt><code>sanako <var>juttu</var></code>
   <dt><code>listako <var>juttu</var></code>
@@ -342,7 +342,7 @@ dd.example {
 
 
 <h3 id="sec3">3. Kommunikaatio</h3>
-<h4>3.1 Transmitters</h4>
+<h4>3.1 Tulostaminen</h4>
 <dl>
   <dt><code>sano <var>juttu</var></code>
   <dt>(<code>sano <var>juttu1</var> <var>juttu2</var> ...)</code>
@@ -361,7 +361,7 @@ dd.example {
 </dl>
 
 
-<h4>3.2 Receivers</h4>
+<h4>3.2 Lukeminen</h4>
 <dl>
   <dt><code>lue</code>
   <dt><code>(lue <var>kehote</var>)</code>
@@ -382,27 +382,27 @@ dd.example {
 </dl>
 -->
 
-<h4>3.4 Tektin tuottaminen
+<h4>3.4 Tekstin tuottaminen
 
 </h4>
 <dl>
-  <dt><code>tekstipois</code>
+  <dt><code>teksti.pois</code>
   <dd>Tyhjentää tekstikentän.
 
-  <dt><code>tekstinväriksi <var>väri</var></code>
+  <dt><code>tekstin.väriksi <var>väri</var></code>
   <dd>Muuttaa tekstin väriä.
 
-  <dt><code>tekstinväri</code>
+  <dt><code>tekstin.väri</code>
   <dd>Antaa tekstin värin.
 
   <dt><code>teksti.isommaksi</code>
   <dt><code>teksti.pienemmäksi</code>
   <dd>Muuta tekstin kokoa.
 
-  <dt><code>tekstinkooksi <var>korkeus</var></code>
+  <dt><code>tekstin.kooksi <var>korkeus</var></code>
   <dd>Muuttaa tekstin kokoa (pikseleissä).
 
-  <dt><code>tekstinkoko</code>
+  <dt><code>tekstin.koko</code>
   <dd>Antaa tekstin nykyisen koon (pikseleissä).
 
   <dt><code>fontiksi <var>name</var></code>
@@ -517,291 +517,288 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   <dd>Asettaa satunnaislukugeneraattorin uuteen kohtaan tai johonkin tiettyyn arvoon.
 </dl>
 
-<h4>4.4 Print Formatting</h4>
+<h4>4.4 Lukujen muuttaminen sanoiksi</h4>
 <dl>
   <dt><code>sanaksi <var>luku</var> <var>pituus</var> <var>tarkkuus</var></code>
   <dd> Luo uuden sanan luvun perusteella annetulla desimaalitarkkuudella.
   <dd class=example>tulosta sanaksi 1/3 10 3</dd>
 </dl>
 
-<h4>4.5 Bitwise Operations</h4>
+<h4>4.5 Bittioperaatiot</h4>
 <dl>
-  <dt><code>bitand <var>luku</var> <var>luku</var></code>
-  <dt><code>(bitand <var>luku</var> ...)</code>
-  <dt><code>bitor <var>luku</var> <var>luku</var></code>
-  <dt><code>(bitor <var>luku</var> ...)</code>
-  <dt><code>bitxor <var>luku</var> <var>luku</var></code>
-  <dt><code>(bitxor <var>luku</var> ...)</code>
-  <dt><code>bitnot <var>luku</var></code>
-  <dd>Bitwise and, or, exclusive-or, and not, respectively.
+  <dt><code>bittisekä <var>luku</var> <var>luku</var></code>
+  <dt><code>(bittisekä <var>luku</var> ...)</code>
+  <dt><code>bittitai <var>luku</var> <var>luku</var></code>
+  <dt><code>(bittitai <var>luku</var> ...)</code>
+  <dt><code>bittijoko.tai <var>luku</var> <var>luku</var></code>
+  <dt><code>(bittijoko.tai <var>luku</var> ...)</code>
+  <dt><code>bittiei.että <var>luku</var></code>
+  <dd>Bittioperaatiot sekä, tai joko tai ja ei että.
 
-  <dt><code>ashift <var>luku</var> <var>bitcount</var></code>
-  <dd>Arithmetic bit shift. If bitcount is negative, shifts to the right, preserving sign.
+  <dt><code>asiirto <var>luku</var> <var>bitcount</var></code>
+  <dd>Artimeettinen bittisiirto. Jos luku on negatiivinen, siirretään oikealle ja etumerkki säilyy.
 
-  <dt><code>lshift <var>luku</var> <var>bitcount</var></code>
-  <dd>Logical bit shift. If bitcount is negative, shifts to the right, zero-filling.
+  <dt><code>lsiirto <var>luku</var> <var>bitcount</var></code>
+  <dd>Looginen bittisiirto. Jos luku on negatiivinen, siirtää oikealle. Lisää nollia toiseen päähän.
 </dl>
 
-<h3 id="sec5">5. Logical Operations</h3>
+<h3 id="sec5">5. Loogiset operaatiot</h3>
 <dl>
-  <dt><code>true</code>
-  <dd>Outputs 1
-  <dt><code>false</code>
-  <dd>Outputs 0
+  <dt><code>joo</code>
+  <dd>Palauttaa 1
+  <dt><code>ei</code>
+  <dd>Palauttaa 0
 
-  <dt><code>and <var>juttu</var> <var>juttu</var></code>
-  <dt><code>(and <var>luku</var> <var>...</var>)</code>
-  <dt><code>or  <var>juttu</var> <var>juttu</var></code>
-  <dt><code>(or <var>juttu</var> <var>...</var>)</code>
-  <dt><code>xor <var>juttu</var> <var>juttu</var></code>
-  <dt><code>(xor <var>juttu</var> <var>...</var>)</code>
-  <dt><code>not <var>juttu</var></code>
-  <dd>Logical "and", "or", "exclusive-or", and "not", respectively.
-  Inputs are numbers or numeric juttuessions, output is 1 (true) or 0 (false).
+  <dt><code>sekä <var>juttu</var> <var>juttu</var></code>
+  <dt><code>(sekä <var>luku</var> <var>...</var>)</code>
+  <dt><code>tai  <var>juttu</var> <var>juttu</var></code>
+  <dt><code>(tai <var>juttu</var> <var>...</var>)</code>
+  <dt><code>joko.tai <var>juttu</var> <var>juttu</var></code>
+  <dt><code>(joko.tai <var>juttu</var> <var>...</var>)</code>
+  <dt><code>ei.että <var>juttu</var></code>
+  <dd>Loogiset operaatiot "ja", "tai", "joko tai", and "ei", järjestyksessä.
+  Syötteet ovat numeroita, palaute on 1 (joo) tai 0 (ei).
 </dl>
 
-<h3 id="sec6">6. Graphics</h3>
+<h3 id="sec6">6. Grafiikka</h3>
 
-<p>An introduction to <a target="_blank" href="https://www.cs.berkeley.edu/~bh/v1ch10/turtle.html">Turtle Geometry</a>.</p>
+<p>Johdatus ?grafiikkaan <a target="_blank" href="https://www.cs.berkeley.edu/~bh/v1ch10/turtle.html"></a>.</p>
 
-<h4>6.1 Turtle Motion</h4>
+<h4>6.1 Kilpparin liikkuminen</h4>
 <dl>
-  <dt><code>forward <var>luku</var></code>
-  <dt><code>fd <var>luku</var></code>
-  <dd>Move turtle forward <var>luku</var> pixels
-  <dd class=example>fd 100</dd>
+  <dt><code>eteen <var>luku</var></code>
+  <dt><code>et <var>luku</var></code>
+  <dd>Liikuttaa kilpparia eteenpäin <var>luku</var> pikselin verran.
+  <dd class=example>et 100</dd>
 
-  <dt><code>back <var>luku</var></code>
-  <dt><code>bk <var>luku</var></code>
-  <dd>Move turtle backward <var>luku</var> pixels
-  <dd class=example>bk 100</dd>
+  <dt><code>taakse <var>luku</var></code>
+  <dt><code>ta <var>luku</var></code>
+  <dd>Liikuttaa kilpparia taaksepäin <var>luku</var> pikselin verran.
+  <dd class=example>ta 100</dd>
 
-  <dt><code>left <var>luku</var></code>
-  <dt><code>lt <var>luku</var></code>
-  <dd>Rotate <var>luku</var> degrees counterclockwise
-  <dd class=example>lt 90</dd>
+  <dt><code>vasemmalle <var>luku</var></code>
+  <dt><code>va <var>luku</var></code>
+  <dd>Kääntää <var>luku</var> verran kilpparia asteissa vastapäivään.
+  <dd class=example>va 90</dd>
 
-  <dt><code>right <var>luku</var></code>
-  <dt><code>rt <var>luku</var></code>
-  <dd>Rotate <var>luku</var> degrees clockwise
-  <dd class=example>rt 90</dd>
+  <dt><code>oikealle <var>luku</var></code>
+  <dt><code>oi <var>luku</var></code>
+  <dd>Kääntää <var>luku</var> verran kilpparia asteissa myötäpäivään.
+  <dd class=example>oi 90</dd>
 
-  <dt><code>setpos [ <var>luku</var> <var>luku</var> ]</code>
-  <dt><code>setxy <var>luku</var> <var>luku</var></code>
-  <dt><code>setx <var>luku</var></code>
-  <dt><code>sety <var>luku</var></code>
-  <dd>Move turtle to the specified location
-  <dd class=example>setpos [ 100 -100 ]</dd>
-  <dd class=example>setxy -100 100</dd>
+  <dt><code>paikkaan [ <var>luku</var> <var>luku</var> ]</code>
+  <dt><code>menexy <var>luku</var> <var>luku</var></code>
+  <dt><code>menex <var>luku</var></code>
+  <dt><code>meney <var>luku</var></code>
+  <dd>Siirrä kilppari tiettyyn paikkaan.
+  <dd class=example>paikkaan [ 100 -100 ]</dd>
+  <dd class=example>menexy -100 100</dd>
 
-  <dt><code>setheading <var>luku</var></code>
-  <dt><code>seth <var>luku</var></code>
-  <dd>Rotate the turtle to the specified heading
-  <dd class=example>setheading 45</dd>
+  <dt><code>suuntaan <var>luku</var></code>
+  <dd>Käännä kilppari osoittamaan tiettyyn suuntaan.
+  <dd class=example>suuntaan 45</dd>
 
-  <dt><code>home</code>
-  <dd>Moves the turtle to center, pointing upwards
+  <dt><code>kotiin</code>
+  <dd>Siirtää kilpparin keskelle ja osoittamaan ylöspäin.
 
-  <dt><code>arc <var>angle</var> <var>radius</var></code>
-  <dd>Without moving the turtle, draws an arc centered on the turtle, starting at the turtle's heading.
-  <dd class=example>arc 180 100</dd>
+  <dt><code>kaari <var>kulma</var> <var>säde</var></code>
+  <dd>Piirtää kaaren kilpikonnaa siirtämättä.
+  <dd class=example>kaari 180 100</dd>
 </dl>
 
-<h4>6.2 Turtle Motion Queries</h4>
+<h4>6.2 Kilpparin aseman selvittäminen</h4>
 <dl>
-  <dt><code>pos</code>
-  <dt><code>xcor</code>
-  <dt><code>ycor</code>
-  <dd>Outputs the current turtle position as [ x y ], x or y respectively
-  <dd class=example>tulosta pos</dd>
+  <dt><code>paikka</code>
+  <dt><code>xkor</code>
+  <dt><code>ykor</code>
+  <dd>Palauttaa kilpparin senhetkisen sijainnin muodossa [ x y ] ja palauttavat joko x- tai y-koordinaatin.
+  <dd class=example>tulosta paikka</dd>
 
-  <dt><code>heading</code>
-  <dd>Outputs the current turtle heading
-  <dd class=example>tulosta heading</dd>
+  <dt><code>suunta</code>
+  <dd>Palauttaa kilpparin suunnan asteina.
+  <dd class=example>tulosta suunta</dd>
 
-  <dt><code>towards [ <var>luku</var> <var>luku</var> ]</code>
-  <dd>Outputs the heading towards the specified [ x y ] coordinates
-  <dd class=example>tulosta towards [ 0 0 ]</dd>
-
+  <dt><code>kohti [ <var>luku</var> <var>luku</var> ]</code>
+  <dd>Palauttaa sunnan kohti [ x y ] -koordinaatteja.
+  <dd class=example>tulosta kohti [ 0 0 ]</dd>
+<!--
   <dt><code>scrunch</code>
   <dd>Outputs the current graphics scaling factors
-  <dd class=example>tulosta scrunch</dd>
+  <dd class=example>tulosta scrunch</dd> -->
 </dl>
 
-<h4>6.3 Turtle and Window Control</h4>
+<h4>6.3 Ikkunan näkymä</h4>
 <dl>
-  <dt><code>showturtle</code>
+  <dt><code>näkyviin</code>
   <dt><code>st</code>
-  <dd>Show the turtle
+  <dd>Kilpikonna tulee näkyviin.
 
-  <dt><code>hideturtle</code>
+  <dt><code>piiloon</code>
   <dt><code>ht</code>
-  <dd>Hide the turtle
+  <dd>Kilpikonna menee piiloon.
 
-  <dt><code>clean</code>
-  <dd>Clear the drawing area
+  <dt><code>pyyhi</code>
+  <dd>Piirtoalue pyyhkiytyy.
 
-  <dt><code>clearscreen</code>
+  <dt><code>uusi</code>
   <dt><code>cs</code>
-  <dd>Same as clean and home together
+  <dd>Tekee sekä pyyhi että kotiin.
 
-  <dt><code>wrap</code>
-  <dd>If the turtle moves off the edge of the screen it will continue on the other side.
-  (default)
+  <dt><code>toistuva</code>
+  <dd>Jos kilpikonna menee piirtoalueen rajojen yli, se päätyy vastakkaiselle reunallle. (oletus)
 
-  <dt><code>window</code>
-  <dd>The turtle can move past the edges of the screen, unbounded.
+  <dt><code>rajaton</code>
+  <dd>Kilppari voi poistua ikkunasta loputtomiin.
 
-  <dt><code>fence</code>
-  <dd>If the turtle attempts to move past the edge of the screen it will stop.
+  <dt><code>rajoitettu</code>
+  <dd>Kilppari ei pääse liikkumaan ikkunan reunan ylitse.
 
-  <dt><code>fill</code>
-  <dd>Does a paint bucket flood fill at the turtle's position.
-  <dd class=example>arc 360 100  fill</dd>
+  <dt><code>täytä.tässä</code>
+  <dd>Täyttää yhtenäisen alueen kilpparin sijainnista kynän värillä.
+  <dd class=example>kaari 360 100  täytä</dd>
 
-  <dt><code>filled <var>fillcolor</var> [ <var>statements ...</var> ]</code>
-  <dd>Execute <var>statements</var> without drawing but keeping track of turtle movements.
-    When complete, fill the region traced by the turtle with <var>fillcolor</var>
-    and outline the region with the current pen style.
-  <dd class=example>filled "red [ repeat 5 [ fd 100  rt 144 ] ]</dd>
+  <dt><code>täytä.alue <var>täyttöväri</var> [ <var>komennot ...</var> ]</code>
+  <dd>Suorittaa <var>komennot</var> piirtämättä mitään, mutta tallettaa kilpparin liikeen muistiin.
+    Sen jälkeen täyttää kilpikonnan kulkeman alueen <var>täyttövärillä</var>
+    ja rajaa aluee kynän sen hetkisillä asetuksilla.
+  <dd class=example>täytä.alue "punainen [ toista 5 [ et 100  oi 144 ] ]</dd>
 
-  <dt><code>label <var>expr</var></code>
-  <dd>Draw a word (same logic as <code>print</code>) on the graphics display at the turtle location
-  <dd class=example>repeat 8 [ label "Logo  rt 45 ]</dd>
+  <dt><code>lappu <var>luku</var></code>
+  <dd>Piirtää sanan (samalla logiikalla kuin <code>sano</code>) piirtoalueelle kilpikonnan kohdalle.
+  <dd class=example>toista 8 [ teksti "Logo  oi 45 ]</dd>
 
-  <dt><code>setlabelheight <var>expr</var></code>
-  <dd>Set the height for text drawn by <code>label</code>, in pixels
-  <dd class=example>setlabelheight 100  label "Logo</dd>
+  <dt><code>lapun.kooksi <var>luku</var></code>
+  <dd>Asettaa lapun korkeudeksi <code>luku</code> pikseliä.
+  <dd class=example>lapun.kooksi 100  lappu "Logo</dd>
 
-  <dt><code>setlabelfont <var>expr</var></code>
-  <dd>Set the font for text drawn by <code>label</code>
+  <dt><code>lapun.fontiksi <var>luku</var></code>
+  <dd>Asettaa lapun tekstin kooksi <code>luku</code>.
   <dd class=example>setlabelfont "Times\ New\ Roman  label "Logo</dd>
-
+<!--
   <dt><code>setscrunch <var>sx</var> <var>sy</var></code>
   <dd>Set the graphics scaling factors
   <dd class=example>setscrunch 1 2  arc 360 100</dd>
+  -->
 </dl>
 
-<h4>6.4 Turtle and Window Queries</h4>
+<h4>6.4 Kilpparin ja ikkunan kokeilut</h4>
 <dl>
-  <dt><code>shownp</code>
-  <dt><code>shown?</code>
-  <dd>Outputs 1 if the turtle is shown, 0 if the turtle is hidden
+  <dt><code>näkyykö</code>
+  <dd>Palauttaa 1 jos kilppari on näkyvissä ja 0 jos kilppari on piilossa
 
-  <dt><code>turtlemode</code>
-  <dd>Outputs <code>WRAP</code>, <code>WINDOW</code> or <code>FENCE</code>
+  <dt><code>ikkunatila</code>
+  <dd>Palauttaa <code>WRAP</code> (toistuva), <code>WINDOW</code> (rajaton) tai <code>FENCE</code> ()
 
-  <dt><code>labelsize</code>
-  <dd>Outputs the height of text drawn by <code>label</code>, in pixels
+  <dt><code>lapun.koko</code>
+  <dd>Antaa lapussa olevan tekstin korkeuden pikseleissä.
 
-  <dt><code>labelfont</code>
-  <dd>Outputs the name of the font drawn by <code>label</code>
+  <dt><code>lapun.koko</code>
+  <dd>Palauttaa lapun tekstin korkeuden.
 </dl>
 
-<h4>6.5 Pen and Background Control</h4>
+<h4>6.5 Kynän ja taustan hallinta</h4>
 <dl>
-  <dt><code>pendown</code>
-  <dt><code>pd</code>
-  <dd>Turtle resumes leaving a trail
+  <dt><code>piirrä</code>
+  <dt><code>pä</code>
+  <dd>Kilppari alkaa jättää jälkeä.
 
-  <dt><code>penup</code>
-  <dt><code>pu</code>
-  <dd>Turtle stops leaving a trail
+  <dt><code>älä.piirrä</code>
+  <dt><code>äp</code>
+  <dd>Kilppari lopettaa jäljen jättämisen.
 
-  <dt><code>penpaint</code>
-  <dt><code>ppt</code>
-  <dt><code>penerase</code>
-  <dt><code>pe</code>
-  <dt><code>penreverse</code>
-  <dt><code>px</code>
-  <dd>Change the turtle drawing mode -
-    <em>paint</em> (the default) leaves a colored trail,
-    <em>erase</em> restores the background,
-    <em>reverse</em> inverts the background.
-  <dd class=example>setpw 10  px  repeat 5 [ fd 100 rt 144 ]</dd>
+  <dt><code>maalaustila</code>
+  <dt><code>maali</code>
+  <dt><code>kumitustila</code>
+  <dt><code>kumi</code>
+  <dt><code>vastaväritila</code>
+  <dt><code>vasta</code>
+  <dd>Muuttaa kilpparin piirtotilaa -
+    <em>maali</em> (oletustila) jättää jälkeensä värin mukaisen jäljen
+    <em>kumi</em> jättää jälkeensä taustan värisen jäljen,
+    <em>vasta</em> muuttaa ohi liikkuessaan kaiken vastavärikseen
+  <dd class=example>paksuudeksi 10 väriksi "pun eteen 100 paksuudeksi 5 vasta taakse 100 </dd>
 
-  <dt><code>setpencolor <var>logocolor</var></code>
-  <dt><code>setpencolor <var>csscolor</var></code>
-  <dt><code>setpencolor [<var>r</var> <var>g</var> <var>b</var>]</code>
-  <dd>Set pen/text color. Color can be a standard Logo color number (0-15), CSS color string (<a target="_blank" href="https://www.w3.org/TR/css3-color/">CSS color names or #rrggbb</a>), or in the list version, r/g/b values in 0...99.
-  <dd>The standard Logo colors are:
+  <dt><code>väriksi <var>logoväri</var></code>
+  <dt><code>väriksi <var>heksaväri</var></code>
+  <dt><code>väriksi <var>värin.nimi</var></code>
+  <dt><code>väriksi [<var>punaista</var> <var>vihreää</var> <var>sinistä</var>]</code>
+  <dd>Asettaa kynälle tai tekstille värin. Väri voi olla logoväri, eli luku 0-15, heksaväri tai värin nimi (<a target="_blank" href="https://www.w3.org/TR/css3-color/"> ohjeet CSS-värien, eli heksavärien ja niiden nimien käyttämiseen</a>) tai lista värin pun/vihr/sin-arvoista, joiden kuuluu olla väliltä 0–99.
+  <dd>Logovärit ovat:
   <style>
     #colortable td { width: 25%; padding-left: 4px; padding-right: 4px; text-align: center; }
   </style>
   <table id="colortable">
     <tr>
-      <td style="background-color: black; color: white;">0<br>black
-      <td style="background-color: blue;">1<br>blue
-      <td style="background-color: lime;">2<br>green
-      <td style="background-color: cyan;">3<br>cyan
+      <td style="background-color: black; color: white;">0<br>musta
+      <td style="background-color: blue;">1<br>sininen
+      <td style="background-color: lime;">2<br>vihreä
+      <td style="background-color: cyan;">3<br>syaani
     <tr>
-      <td style="background-color: red;">4<br>red
+      <td style="background-color: red;">4<br>punainen
       <td style="background-color: magenta;">5<br>magenta
-      <td style="background-color: yellow;">6<br>yellow
-      <td style="background-color: white;">7<br>white
+      <td style="background-color: yellow;">6<br>keltainen
+      <td style="background-color: white;">7<br>valkoinen
     <tr>
-      <td style="background-color: brown;">8<br>brown
-      <td style="background-color: tan;">9<br>tan
-      <td style="background-color: green;">10<br>green
-      <td style="background-color: aquamarine;">11<br>aqua
+      <td style="background-color: brown;">8<br>veri
+      <td style="background-color: tan;">9<br>hiekka
+      <td style="background-color: green;">10<br>metsä
+      <td style="background-color: aquamarine;">11<br>meri
     <tr>
-      <td style="background-color: salmon;">12<br>salmon
-      <td style="background-color: purple;">13<br>purple
-      <td style="background-color: orange;">14<br>orange
-      <td style="background-color: gray;">15<br>gray
+      <td style="background-color: salmon;">12<br>roosa
+      <td style="background-color: purple;">13<br>myrkky
+      <td style="background-color: orange;">14<br>jaffa
+      <td style="background-color: gray;">15<br>kivi
   </table>
-  <dd class=example>setpencolor 4</dd>
-  <dd class=example>setpencolor "red</dd>
-  <dd class=example>setpencolor "#ff0000</dd>
-  <dd class=example>setpencolor [ 99 0 0 ]</dd>
+  <dd> Väreistä 1–7 on myös lyhennetyt versiot: sin, vihr, sya, pun, mag, kelt ja valk.
+  <dd class=example>väriksi 4</dd>
+  <dd class=example>väriksi "punainen</dd>
+  <dd class=example>väriksi "#ff0000</dd>
+  <dd class=example>väriksi [ 99 0 0 ]</dd>
 
-  <dt><code>setpalette <var>colornumber</var> <var>csscolor</var></code>
-  <dt><code>setpalette <var>colornumber</var> [<var>r</var> <var>g</var> <var>b</var>]</code>
-  <dd>Change one of the standard color entries (8 or above) to the given color.</dd>
-  <dd class=example>setpalette 8 "pink  setbg 8</dd>
-  <dd class=example>setpalette 8 "#ff4f00  setbg 8</dd>
-  <dd class=example>setpalette 8 [ 99 31 0 ]  setbg 8</dd>
 
-  <dt><code>setpensize <var>expr</var></code>
-  <dd>Set pen width in pixels. If <var>expr</var> is a list, the first member is used.
+  <dt><code>palettiin <var>värinumero</var> <var>heksaväri</var></code>
+  <dt><code>palettiin <var>värinumero</var> <var>värin.nimi</var></code>
+  <dt><code>palettiin <var>värinumero</var> [<var>punaista</var> <var>vihreää</var> <var>sinistä</var>]</code>
+  <dd>Muuta kahdeksan alemman värin sävyä paletissa.</dd>
+  <dd class=example>palettiin 8 "jaffa  taustaksi 8</dd>
+  <dd class=example>palettiin 8 "#ff4f00  taustaksi 8</dd>
+  <dd class=example>palettiin 8 [ 99 31 40 ]  taustaksi 8</dd>
 
-  <dt><code>setbackground <var>color</var></code>
-  <dt><code>setscreencolor <var>color</var></code>
-  <dt><code>setsc <var>color</var></code>
-  <dd>Set the background color; same options as <code>setpencolor</code>
-  <dd class=example>setbackground "red</dd>
+  <dt><code>paksuudeksi <var>luku</var></code>
+  <dd>Muuttaa kynän paksuuden annetuksi pikselimäätäksi. <var>Luku</var> voi olla myös lista, jolloin käytetään listan ensimmäistä lukua.
+
+  <dt><code>taustaväriksi <var>väri</var></code>
+  <dt><code>taustaksi <var>väri</var></code>
+  <dd>Asettaa taustalle annetun värin. Toimii samalla tavalla kuin <code>väriksi</code>
+  <dd class=example>taustaksi "pun</dd>
 </dl>
 
-<h4>6.6 Pen Queries</h4>
+<h4>6.6 Kynäkokeilut</h4>
 <dl>
-  <dt><code>pendownp</code>
-  <dt><code>pendown?</code>
-  <dd>Outputs 1 if the pen is down, 0 otherwise
-  <dd class=example>show pendown?</dd>
+  <dt><code>piirtääkö</code>
+  <dd>Antaa 1, jos piirtää. Muussa tapauksessa antaa 0.
+  <dd class=example>tulosta piirtääkö</dd>
 
-  <dt><code>penmode</code>
-  <dd>Outputs <code>PAINT</code>, <code>ERASE</code> or <code>REVERSE</code>
-  <dd class=example>show penmode</dd>
+  <dt><code>piirtotila</code>
+  <dd>Antaa <code>PAINT</code>, <code>ERASE</code> tai <code>REVERSE</code>
+  <dd class=example>tulosta piirtotila</dd>
 
-  <dt><code>pencolor</code>
-  <dt><code>pc</code>
-  <dd>Outputs the current pen color. This will be a CSS color string, not necessarily the value passed in.
-  <dd class=example>show pencolor</dd>
+  <dt><code>väri</code>
+  <dd>Antaa kynän värin, joka on CSS-väri, vaikka väriksi ei olisi asetettu CSS-väriä.
+  <dd class=example>tulosta väri</dd>
 
-  <dt><code>palette <var>colornumber</var></code>
-  <dd>Outputs the a palette entry. This will be a CSS color string, not necessarily the value passed in.</dd>
-  <dd class=example>show palette 8</dd>
+  <dt><code>paletista <var>värinumero</var></code>
+  <dd>Antaa paletista numeron mukaisen värin CSS-värinä, vaikka väriksi ei olisi asetettu CSS-väriä.</dd>
+  <dd class=example>tulosta paletista 8</dd>
 
-  <dt><code>pensize</code>
-  <dd>Outputs a two element list with the pen width and height (usually the same).
-  <dd class=example>show pensize</dd>
+  <dt><code>paksuus</code>
+  <dd>Antaa listan, jossa kynän leveys ja korkeus, jotka ovat aina samat.
+  <dd class=example>tulosta paksuus</dd>
 
-  <dt><code>background</code>
-  <dt><code>bg</code>
-  <dt><code>getscreencolor</code>
-  <dt><code>getsc</code>
-  <dd>Outputs the background color. This will be a CSS color string, not necessarily the value passed in.
-  <dd class=example>show background</dd>
+  <dt><code>taustaväri</code>
+  <dt><code>tausta</code>
+  <dd>Antaa taustavärin, joka on CSS-väri, vaikka väriksi ei olisi asetettu CSS-väriä.
+  <dd class=example>tulosta tausta</dd>
 </dl>
 
 <!--
@@ -810,43 +807,43 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
 </dl>
 -->
 
-<h4>6.8 Mouse/Touch Queries</h4>
+<h4>6.8 Hiirikokeilut</h4>
 <dl>
-  <dt><code>mousepos</code></dt>
-  <dd>Outputs a list of the x, y coordinates of the last mouse position</dd>
-  <dd class=example>forever [setpos mousepos]</dd>
+  <dt><code>hiiri</code></dt>
+  <dd>Antaa listana hiiren x- ja y-koordinaatit.</dd>
+  <dd class=example>ikuisesti [paikkaan hiiri]</dd>
 
-  <dt><code>clickpos</code></dt>
-  <dd>Outputs a list of the x, y coordinates of the last mouse press</dd>
-  <dd class=example>forever [setpos clickpos]</dd>
+  <dt><code>klikkaus</code></dt>
+  <dd>Antaa listana hiiren viimeisimmän klikkauksen x- ja y-koordinaatit.</dd>
+  <dd class=example>ikuisesti [paikkaan klikkaus]</dd>
 
-  <dt><code>buttonp</code></dt>
-  <dt><code>button?</code></dt>
-  <dd>Outputs 1 if any mouse button is down, 0 otherwise.</dd>
-  <dd class=example>forever [ifelse button? [pd] [pu] setpos mousepos]</dd>
+  <dt><code>klikattuko</code></dt>
+  <dd>Antaa 1, jos hiiren nappi on pohjassa, muussa tapauksessa antaa 0.</dd>
+  <dd class=example>ikuisesti [riippuen klikattuko [pä] [äp] paikkaan hiiri]</dd>
 
-  <dt><code>button</code></dt>
-  <dd>Outputs a number indicating the pressed mouse buttons
-    (<code>1</code> = left, 2 = right, etc) or 0 for none.
+  <dt><code>nappi</code></dt>
+  <dd>Antaa numeron, joka kuvastaa mitä nappia hiiressä on painettu.
+    (<code>1</code> = vasen nappi, 2 = oikea nappi, jne) tai 0, jos mitään nappia ei ole painettu.
 
-  <dt><code>touches</code></dt>
-  <dd>Outputs a list of current touch coordinates</dd>
-  <dd class=example>forever [ifelse count touches [setpos first touches pendown] [penup]]</dd>
+  <dt><code>kosketukset</code></dt>
+  <dd>Antaa listana viimeisimpien kosketusten x- ja y-koordinaatit.</dd>
+  <dd class=example>ikuisesti [riippuen pituus kosketukset [sijaintiin eka kosketukset pä] [äp]]</dd>
 </dl>
 
-<h3 id="sec7">7. Workspace Management</h3>
-<h4>7.1 Procedure Definition</h4>
+<h3 id="sec7">7. Aliohjelmat ja muuttujat</h3>
+<h4>7.1 Aliohjelmien luominen</h4>
 <dl>
-  <dt><code>to <var>procname</var> <var>inputs ...</var> <var>statements ...</var> end</code>
-  <dd>Define a new named procedure. Inputs can be:
+  <dt><code>miten <var>aliohjelman.nimi</var> <var>syötteet ...</var> <var>komennot ...</var> valmis</code>
+  <dd>Luo uuden aliohjelman. Syötteet voivat olla muodossa:
     <ul>
-      <li>Required: <code>:a :b</code></li>
-      <li>Optional (with default values): <code>[:c 5] [:d 7]</code></li>
-      <li>Rest (remaining inputs as a list): <code>[:r]</code></li>
-      <li>Default number of inputs: <code>3</code>
+      <li>Vaadittu syöte: <code>:a :b</code></li>
+      <li>Valinnainen syöte ja oletusarvo syötteen puuttuessa: <code>[:c 5] [:d 7]</code></li>
+      <li>Loput syötteet listana: <code>[:r]</code></li>
+      <li>Syötteiden määrä: <code>3</code>
     </ul>
-  <dd class=example>to star :n  repeat 5 [ fd :n rt 144 ]  end</dd>
+  <dd class=example>miten tähti :koko  toista 5 [ et :koko oi 144 ]  valmis</dd>
 
+<!--
   <dt><code>define <var>procname</var> [[<var>inputs</var> ...][<var>statements</var> ...]]</code>
   <dd>Define a new named procedure with optional inputs
   <dd class=example>define "star [[n][repeat 5 [fd :n  rt 144]]]</dd>
@@ -864,36 +861,41 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   be overridden. Primitive procedures can't be overridden unless <code>REDEFP</code> is <code>TRUE</code>.
   <dd class=example>copydef "new "old</dd>
 </dl>
+-->
 
-<h4>7.2 Variable Definition</h4>
+<h4>7.2 Muuttujien luominen</h4>
 <dl>
-  <dt><code>olkoon <var>varname</var> <var>expr</var></code>
-  <dd>Update a variable or define a new global variable. The variable name must
-  be quoted
-  <dd class=example>olkoon "myvar 5</dd>
+  <dt><code>olkoon <var>muuttujan.nimi</var> <var>juttu</var></code>
+  <dd>Luo muuttujan koko ohjelman käyttöön. Muuttujan nimi alkaa lainausmerkillä.
+  <dd class=example>olkoon "muuttujani 5</dd>
 
-  <dt><code>name <var>expr</var> <var>varname</var></code>
+<!--
+  <dt><code>name <var>expr</var> <var>muuttujan.nimi</var></code>
   <dd>Like <code>olkoon</code> but with the inputs reversed
   <dd class=example>name 5 "myvar</dd>
+-->
 
-  <dt><code>local <var>varname</var></code>
-  <dt><code>(local <var>varname</var> ...)</code>
-  <dd>A subsequent <code>olkoon</code> will create the variable(s) in the local scope instead of the global scope
-  <dd class=example>local "myvar</dd>
+  <dt><code>oma <var>muuttujan.nimi</var></code>
+  <dt><code>(oma <var>muuttujan.nimi</var> ...)</code>
+  <dd>Tulevat <code>olkoon</code>-käskyt luovat aliohjelman omia muuttujia, jotka eivät ole koko ohjelman käytössä.
+  <dd class=example>oma "muuttujani</dd>
 
-  <dt><code>localolkoon <var>varname</var> <var>expr</var></code>
-  <dd>Define a variable in the local scope (shortcut for <code>local</code> then <code>olkoon</code>
-  <dd class=example>localolkoon "myvar 5</dd>
+  <dt><code>olkoon.oma <var>muuttujan.nimi</var> <var>juttu</var></code>
+  <dd>Luo ja asettaa aliohjelman oman muuttujan, kuin kutsuisi ensin komentoa <code>oma</code> ja sitten komentoa <code>olkoon</code>
+  <dd class=example>olkoon.oma "muuttujani 5</dd>
 
-  <dt><code>juttu <var>varname</var></code>
-  <dd>Outputs the value of variable. <code>:foo</code> is a shortcut for <code>juttu "foo</code>
-  <dd class=example>show thing "myvar</dd>
+  <dt><code>mitä <var>muuttujan.nimi</var></code>
+  <dd>Antaa muuttujan arvon. <code>:foo</code> on sama asia kuin <code>mitä "foo</code>
+  <dd class=example>tulosta mitä "muuttujani</dd>
+  <dd class=example>tulosta :muuttujani</dd>
 
-  <dt><code>global <var>varname</var></code>
+<!--
+  <dt><code>global <var>muuttujan.nimi</var></code>
   <dd>Reserve the variable at the global scope. This doesn't do anything useful.
   <dd class=example>global "myvar</dd>
+  -->
 </dl>
-
+<!--
 <h4>7.3 Property Lists</h4>
 <dl>
   <dt><code>pprop <var>plistname</var> <var>propname</var> <var>value</var></code>
@@ -976,12 +978,11 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
     number of inputs; maximum is -1 if unlimited.
 </dl>
 
-<!--
+
 <h4>7.6 Workspace Inspection</h4>
 <dl>
 </dl>
 
--->
 
 <h4>7.7 Workspace Control</h4>
 <dl>
@@ -1003,8 +1004,8 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   <dt><code>erpls</code>
   <dd>Erase all non-buried property lists.
 
-  <dt><code>ern <var>varname</var></code>
-  <dt><code>ern <var>varnamelist</var></code>
+  <dt><code>ern <var>muuttujan.nimi</var></code>
+  <dt><code>ern <var>muuttujan.nimilist</var></code>
   <dd>Erase the named variable(s).
 
   <dt><code>epl <var>plname</var></code>
@@ -1018,8 +1019,8 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   <dt><code>buryall</code>
   <dd>Bury all user-defined procedures, variables, and property lists.
 
-  <dt><code>buryname <var>varname</var></code>
-  <dt><code>buryname <var>varnamelist</var></code>
+  <dt><code>buryname <var>muuttujan.nimi</var></code>
+  <dt><code>buryname <var>muuttujan.nimilist</var></code>
   <dd>Bury the given variable (or list of variables).
 
   <dt><code>unbury <var>contentslist</var></code>
@@ -1029,8 +1030,8 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   <dt><code>unburyall</code>
   <dd>Unbury all user-defined procedures, variables, and property lists.
 
-  <dt><code>unburyname <var>varname</var></code>
-  <dt><code>unburyname <var>varnamelist</var></code>
+  <dt><code>unburyname <var>muuttujan.nimi</var></code>
+  <dt><code>unburyname <var>muuttujan.nimilist</var></code>
   <dd>Unbury the given variable (or list of variables).
 
   <dt><code>buriedp <var>contentslist</var></code>
@@ -1039,61 +1040,58 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
     is buried, 0 otherwise.
 
 </dl>
+-->
 
-<h3 id="sec8">8. Control Structures</h3>
-<h4>8.1 Control</h4>
+<h3 id="sec8">8. Ohjausrakenteet</h3>
+<h4>8.1 Ohjaus</h4>
 <dl>
-  <dt><code>run [ <var>statements ...</var> ]</code>
-  <dd>Run the specified statements once
-  <dd class=example>run [ fd 100 rt 90 ]</dd>
+  <dt><code>tee [ <var>komennot ...</var> ]</code>
+  <dd>Suorittaa listan komentoja.
+  <dd class=example>tee [ et 100 oi 90 ]</dd>
 
-  <dt><code>runresult [ <var>statements ...</var> ]</code>
-  <dd>Run the specified statements once. If the statements return a value, the result is a
-  list with the value as a single member. Otherwise, the result is an empty list.
+  <dt><code>tee.ja.anna [ <var>komennot ...</var> ]</code>
+  <dd>Suorittaa listan komentoja ja antaa niiden viimeisen arvon listana tai tyhjän listan, jos annearvoja ei ole.
 
-  <dt><code>repeat <var>expr</var> [ <var>statements ...</var> ]</code>
-  <dd>Repeat statements <var>expr</var> times
-  <dd class=example>repeat 4 [ fd 100 rt 90 ]</dd>
+  <dt><code>toista <var>monestiko</var> [ <var>komennot ...</var> ]</code>
+  <dd>Toistaa komennot annetun määrän verran.
+  <dd class=example>toista 4 [ et 100 oi 90 ]</dd>
 
-  <dt><code>forever [ <var>statements ...</var> ]</code>
-  <dd>Repeat statements forever. Used inside a user-defined procedure
-  that terminates with <code>output</code>, <code>stop</code> or <code>bye</code>
-  <dd class=example>forever [ olkoon "n random 100  show :n  if :n == 0 [ bye ] ]</dd>
+  <dt><code>ikuisesti [ <var>komennot ...</var> ]</code>
+  <dd>Toistaa komentoja ikuisesti. Ikuisesti-silmukan pysäyttävät komennot <code>anna</code>, <code>seis</code> ja <code>heippa</code>
+  <dd class=example>ikuisesti [ olkoon "luku satunnainen 100  tulosta :luku  jos :luku == 0 [ heippa ] ]</dd>
 
-  <dt><code>repcount</code>
+  <dt><code>kerta</code>
   <dt><code>#</code>
-  <dd>Outputs the current iteration number of the current <code>repeat</code> or <code>forever</code>
-  <dd class=example>repeat 10 [ show repcount ]</dd>
-  <dd class=example>repeat 10 [ show # ]</dd>
+  <dd>Kertoo monennettako kertaa toistoa suoritetaan. Toimii sekä komennolla <code>toista</code> että <code>ikuisesti</code>
+  <dd class=example>toista 10 [ tulosta kerta ]</dd>
+  <dd class=example>toista 10 [ tulosta # ]</dd>
 
-  <dt><code>if <var>expr</var> [ <var>statements ...</var> ]</code>
-  <dt><code>if [<var>expr</var>] [ <var>statements ...</var> ]</code>
-  <dd>Execute statements if the expression is non-zero
-  <dd class=example>if 2 > 1 [ show "yep ]</dd>
+  <dt><code>jos <var>ehto</var> [ <var>komennot ...</var> ]</code>
+  <dt><code>jos [<var>ehto</var>] [ <var>komennot ...</var> ]</code>
+  <dd>Suorittaa komennot, jos annettu ehto on arvoltaan jotain muuta kuin 0.
+  <dd class=example>jos 2 > 1 [ tulosta "jep ]</dd>
 
-  <dt><code>ifelse <var>expr</var> [ <var>statements ...</var> ] [ <var>statements ...</var> ]</code>
-  <dt><code>ifelse [<var>expr</var>] [ <var>statements ...</var> ] [ <var>statements ...</var> ]</code>
-  <dd>Execute first set of statements if the expression is non-zero, otherwise execute the second set
-  <dd class=example>ifelse 1 > 2 [ show "yep ] [ show "nope ]</dd>
+  <dt><code>riippuen <var>ehto</var> [ <var>komennot ...</var> ] [ <var>komennot ...</var> ]</code>
+  <dt><code>riippuen [<var>ehto</var>] [ <var>komennot ...</var> ] [ <var>komennot ...</var> ]</code>
+  <dd>Suorittaa ensimmäiset komennot jos ehto on arvoltaan jotain muuta kuin 0. Jos ehto on 0, suorittaa jälkimmäiset komennot.
+  <dd class=example>riippuen 1 > 2 [ tulosta "jep ] [ tulosta "höpöhöpö ]</dd>
 
-  <dt><code>test <var>expr</var></code>
-  <dt><code>test [<var>expr</var>]</code>
-  <dd>Test the specified expression, save the result in the local scope for subsequent use by <code>iftrue</code> or <code>iffalse</code>
+  <dt><code>onko <var>ehto</var></code>
+  <dt><code>onko [<var>ehto</var>]</code>
+  <dd>Kokeilee onko annettu ehto totta vai ei, ja tallettaa muistiin saadun tuloksen. Käytetään yhdessä komentojen <code>jos.on</code> ja <code>jos.ei</code> kanssa.
 
-  <dt><code>iftrue [ <var>statements ...</var>]</code>
-  <dt><code>ift [ <var>statements ...</var>]</code>
-  <dt><code>iffalse [ <var>statements ...</var>]</code>
-  <dt><code>iff [ <var>statements ...</var>]</code>
-  <dd>Run the statements if the result of the last local <code>test</code> was non-zero (true) or zero (false) respectively.
-  <dd class=example>test 1 > 2  iftrue [ show "yep ]  iffalse [ show "nope ]</dd>
+  <dt><code>jos.on [ <var>komennot ...</var>]</code>
+  <dt><code>jos.ei [ <var>komennot ...</var>]</code>
+  <dd>jos.on suorittaa komennot jos edellinen <code>onko</code> oli muuta kuin 0 (eli joo). jos.ei suorittaa komennot jos edellinen <code>onko</code> oli 0 (eli ei).
+  <dd class=example>onko 1 > 2  jos.on [ tulosta "jep ]  jos.ei [ tulosta "höpöhöpö ]</dd>
 
-  <dt><code>stop</code></dt>
-  <dd>End the running procedure with no output value.</dd>
+  <dt><code>seis</code></dt>
+  <dd>Pysäyttää nykyisen aliohjelman.</dd>
 
-  <dt><code>output <var>expr</var></code></dt>
-  <dt><code>op <var>expr</var></code></dt>
-  <dd>End the running procedure and output the specified value.</dd>
+  <dt><code>anna <var>juttu</var></code></dt>
+  <dd>Pysäyttää nykyisen aliohjelman ja antaa jutun.</dd>
 
+<!--
   <dt><code>catch tag instructionlist</code></dt>
   <dd>Run instructions, but if an error with matching tag is thrown, return the thrown value (if any).
     Use <code>"ERROR</code> to catch errors from regular procedures.
@@ -1111,64 +1109,65 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
     an error number, an error message message, and the procedure name where the error occurred.
   </dd>
   <dd class=example>catch "error [ show 1 / 0 ] show error</dd>
+-->
+  <dt><code>odota <var>aikaa</var></code>
+  <dd>Pysäyttää ohjelman annetuksi <var>aikaa</var>. Syötetty aika on sekunnin kuudeskymmenesosissa (60 = 1 sekunti).
 
-  <dt><code>wait <var>time</var></code>
-  <dd>Pauses execution. <var>time</var> is in 60ths of a second.
+  <dt><code>heippa</code>
+  <dd>Ohjelma loppuu.
 
-  <dt><code>bye</code>
-  <dd>Terminate the program
-
+<!--
   <dt><code>.maybeoutput <var>expr</var></code>
   <dd>Like <code>output</code> if <var>expr</var> returns a value, like <code>stop</code> otherwise
-
-  <dt><code>ignore <var>expr</var></code>
-  <dd>Evaluate and ignore results of the expression
-  <dd class=example>olkoon "q [ 1 2 3 ]  ignore dequeue "q</dd>
-
-  <dt><code>` <var>list</var></code></dt>
-  <dd>Outputs the list with substitutions:
+-->
+  <dt><code>älä.käytä <var>juttu</var></code>
+  <dd>Laskee jutun arvon, mutta ei tee sillä mitään.
+  <dd class=example>olkoon "lista [ 1 2 3 ]  älä.käytä ota "lista</dd>
+  
+  <dt><code>` <var>lista</var></code></dt>
+  <dd>Antaa täydennetyn listan:
     <ul>
-      <li><code>, <var>instructionlist</var></code> replaced by output
-      <li><code>,@ <var>instructionlist</var></code> replaced by output list members
-      <li><code>",<var>instruction</var></code> replaced by output prefixed with "
-      <li><code>,@<var>instruction</var></code> replaced by output prefixed with :
+      <li><code>, <var>[lauseke]</var></code> korvataan lausekkeen arvolla
+      <li><code>,@ <var>[lauseke]</var></code> koarvataan lausekkeen antamilla arvoilla. Lausekkeen on annettava lista.
+      <li><code>",<var>lauseke</var></code> korvataan lausekkeen arvolla, jonka eteen on lisätty "
+      <li><code>:,<var>lauseke</var></code> korvataan lausekkeen arvolla, jonka eteen on lisätty :
     </ul>
   </dd>
-  <dd class=example>show `[a b ,[bf [c d e]] f ,@[bf [g h i]]]</dd>
-  <dd class=example>olkoon "v "x  show `[",:v :,:v]</dd>
+  <dd class=example>tulosta `[a b ,[ekatta [c d e]] f ,@[ekatta [g h i]]]</dd>
+  <dd class=example>olkoon "v "x  tulosta `[",:v :,:v]</dd>
+  
+  <dt><code>luvuille [<var>muuttuja alku loppu</var>] [ <var>komennot ...</var>]</code>
+  <dt><code>luvuille [<var>muuttuja alku loppu askel</var>] [ <var>komennot ...</var>]</code>
+  <dd>Käy luvut alusta loppuun. Askel määrittää montako lukua edellisen ja seuraavan luvun välillä on.
+  <dd class=example>luvuille [ a 1 10 ] [ tulosta :a ]</dd>
+  <dd class=example>luvuille [ a 0 20 2 ] [ tulosta :a ]</dd>
 
-  <dt><code>for <var>controllist</var> [ <var>statements ...</var>]</code>
-  <dd>Typical <code>for</code> loop. The <var>controllist</var> specifies three or four members:
-  the local <var>varname</var>, <var>start</var> value, <var>limit</var> value,
-  and optional <var>step</var> size.
-  <dd class=example>for [ a 1 10 ] [ show :a ]</dd>
-  <dd class=example>for [ a 0 20 2 ] [ show :a ]</dd>
+  <dt><code>toista.muuttujalla [<var>muuttuja</var> <var>kertaa</var>] [ <var>komennot ...</var></code></dt>
+    <dt><code>toi.muut [<var>muuttuja</var> <var>kertaa</var>] [ <var>komennot ...</var></code></dt>
+  <dd>Kuten <code>toista</code>, mutta käytyjen kierrosten määrä tallennetaan annettuun muuttujaan.</dd>
+  <dd class=example>toi.muut [ i 5 ] [ tulosta :i * :i ]</dd>
 
-  <dt><code>dotimes [<var>varname</var> <var>times</var>] [ <var>statements ...</var></code></dt>
-  <dd>Run the statements the specified number of <var>times</var>. The variable
-    <var>varname</var> is set to the current iteration number.</dd>
-  <dd class=example>dotimes [ i 5 ] [ show :i * :i ]</dd>
+  <dt><code>do.tee.ja.jatka.kun [ <var>komennot ...</var>] <var>ehto</var></code>
+  <dt><code>tjjkun [ <var>komennot ...</var>] <var>ehto</var></code>
+  <dd>Suorittaa syötetyt komennot, minkä jälkeen jatkaa niin kauan, kun ehto on tosi (ei nolla). Ehdon voi antaa myös hakasulkeissa.
+  <dd class=example>tjjkun [ olkoon "a satunnainen 10  tulosta :a ] :a < 8</dd>
 
-  <dt><code>do.while [ <var>statements ...</var>] <var>expr</var></code>
-  <dt><code>do.while [ <var>statements ...</var>] [<var>expr</var>]</code>
-  <dd>Runs the specified statements at least once, and repeats while the expression is non-zero (true).
-  <dd class=example>do.while [ olkoon "a random 10  show :a ] :a < 8</dd>
+  <dt><code>kun <var>ehto</var> [ <var>komennot ...</var>]</code>
+  <dt><code>kun [<var>ehto</var>] [ <var>komennot ...</var>]</code>
+  <dd>Suorittaa syötettyjä komentoja niin kauan, kun ehto on tosi.
+  <dd class=example>kun (satunnainen 2) = 0 [ tulosta "nolla ] tulosta "yksi</dd>
 
-  <dt><code>while <var>expr</var> [ <var>statements ...</var>]</code>
-  <dt><code>while [<var>expr</var>] [ <var>statements ...</var>]</code>
-  <dd>Runs the specified statements only while the expression remains non-zero (true).
-  <dd class=example>while (random 2) = 0 [ show "zero ] show "one</dd>
+  <dt><code>tee.ja.jatka.kunnes [ <var>komennot ...</var>] <var>ehto</var></code>
+  <dt><code>tjjkunnes [ <var>komennot ...</var>] <var>ehto</var></code>
+  <dd>Suorittaa syötetyt komennot, mikä jälkeen jatkaa, kunnes ehto täyttyy.
+  <dd class=example>tjjkunnes [ olkoon "a satunnainen 10  tulosta :a ] :a < 8</dd>
 
-  <dt><code>do.until [ <var>statements ...</var>] <var>expr</var></code>
-  <dt><code>do.until [ <var>statements ...</var>] [<var>expr</var>]</code>
-  <dd>Runs the specified statements at least once, and repeats while the expression is zero (false).
-  <dd class=example>do.until [ olkoon "a random 10  show :a ] :a < 8</dd>
+  <dt><code>kunnes <var>ehto</var> [ <var>komennot ...</var>]</code>
+  <dt><code>kunnes [<var>ehto</var>] [ <var>komennot ...</var>]</code>
+  <dd>Suorittaa syötettyjä komentoja, kunnes ehto täyttyy.
+  <dd class=example>kunnes (satunnainen 2) = 0 [ tulosta "yksi ] tulosta "nolla</dd>
 
-  <dt><code>until <var>expr</var> [ <var>statements ...</var>]</code>
-  <dt><code>until [<var>expr</var>] [ <var>statements ...</var>]</code>
-  <dd>Runs the specified statements only while the expression remains zero (false).
-  <dd class=example>until (random 2) = 0 [ show "one ] show "zero</dd>
-
+<!--
   <dt><code>case <var>value</var> [ <var>clauses ...</var> ] </code>
   <dd>For each clause in order:
     If the clause is of the form <code>[ ELSE <var>expr</var> ]</code>
@@ -1186,7 +1185,8 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
     and <var>expr1</var> evaluates to non-zero (true) then <var>expr2</var> is evaluated and returned.
   <dd class=example>show cond [ [ [:var = 1] "one] [ [:var = 2] "two] [ else "other ] ]</dd>
 </dl>
-
+-->
+<!--
 <h4>8.2 Template-based Iteration</h4>
 
 <p>These higher-level procedures support only the <em>named procedure</em> form of template.
@@ -1229,7 +1229,7 @@ The first input is the name of a procedure to call.</p>
   <dd class=example>show crossmap "word [[a b] [x y]]</dd>
   <dd class=example>show (crossmap "word [a b c] [1 2 3 4])</dd>
 </dl>
-
+-->
 
 </div>
 
