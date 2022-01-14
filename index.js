@@ -40,7 +40,7 @@ var logo, turtle;
 
 // Later scripts may override this to customize the examples.
 // Leave it exposed as a global.
-var examples = 'examples.txt';
+var examples = 'examples-fi.txt';
 
 
 //
@@ -717,7 +717,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       if ('graphics' in data) {
         if ('colors' in data.graphics) {
-          turtle.colorAlias = function(s) {
+          logo.colorAlias = function(s) {
             return data.graphics.colors[s];
           };
         }
