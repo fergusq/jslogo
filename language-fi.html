@@ -69,7 +69,7 @@ dd.example {
 
   <dt><code>{ <var>sana ...</var> }</code>
   <dt><code>{ <var>sana ...</var> }@<var>origin</var></code>
-  <dd>Taulukko sanoja välilyönnillä eroteltuna
+  <dd>Rivi sanoja välilyönnillä eroteltuna (yksiulotteinen taulukko)
   <dd class=example>show {1 2 3}</dd>
 
   <dt><code> ( <var>lauseke</var> )</code>
@@ -128,9 +128,9 @@ dd.example {
   <dd class=example>tulosta taulukko [2 2]</dd>
 
   <dt><code>lista.riviksi <var>lista</var></code>
-  <dt><code>(listariviksi <var>lista</var> <var>alku</var>)</code>
+  <dt><code>(lista.riviksi <var>lista</var> <var>alku</var>)</code>
   <dd>Luo uuden taulukon listan pohjalta.
-  <dd class=example>tulosta listariviksi [ 1 3 5 7 ]</dd>
+  <dd class=example>tulosta lista.riviksi [ 1 3 5 7 ]</dd>
 
   <dt><code>rivi.listaksi <var>rivi</var></code>
   <dd>Luo uuden listan rivin pohjalta.
@@ -205,7 +205,7 @@ dd.example {
   <dd class=example>tulosta paitsi "b [ a b c ]</dd>
   <dd class=example>tulosta paitsi "a "banana</dd>
 
-  <dt><code>toistotta <var>list</var></code>
+  <dt><code>toistotta <var>lista</var></code>
   <dd>Luo uuden listan alkuperäisen pohjalta, josta on otettu toistuvat jäsenet pois.
   <dd class=example>tulosta toistotta [ 1 2 3 2 3 4 3 4 5 ]</dd>
   <dd class=example>tulosta toistotta "banana</dd>
@@ -232,7 +232,7 @@ dd.example {
   <dt><code>taulukon.kohtaan [<var>indeksi</var>...] <var>taulukko</var> <var>arvo</var></code>
   <dt><code>taulun.kohtaan [<var>indeksi</var>...] <var>taulu</var> <var>arvo</var></code>
   <dd>Asettaa taulukkoon arvon.
-  <dd class=example>olkoon "a {{1 2} {3 4}}  taulukon.kohtaa [2 1] :a "x  tulosta :a</dd>
+  <dd class=example>olkoon "a {{1 2} {3 4}}  taulukon.kohtaan [2 1] :a "x  tulosta :a</dd>
 
   <dt><code>.ekaksi <var>lista</var> <var>arvo</var></code>
   <dd>Tekee arvosta listan ensimmäisen jäsenen.
@@ -301,7 +301,7 @@ dd.example {
   <dt><code>pituus <var>juttu</var></code>
   <dd>Kertoo jutun pituuden.
   <dd class=example>tulosta pituus [ 1 2 3 ]</dd>
-  <dd class=example>tulosta pituus "hello</dd>
+  <dd class=example>tulosta pituus "moikka</dd>
 
   <dt><code>unicode <var>juttu</var></code>
   <dd>Antaa jutun unicodessa.
@@ -313,14 +313,14 @@ dd.example {
 
   <dt><code>lähtien <var>juttu</var> <var>lista</var></code>
   <dd>Luo uuden listan ensimmäisestä jutusta lähtien.
-  <dd class=example>tulosta lähtien "a "banana</dd>
+  <dd class=example>tulosta lähtien "a "banaani</dd>
   <dd class=example>tulosta lähtien 2 [1 2 3 4]</dd>
 
   <dt><code>isolla <var>juttu</var></code>
   <dt><code>pienellä <var>juttu</var></code>
   <dd>Antaa jutun isoilla/pienillä kirjaimilla.
-  <dd class=example>tulosta uppercase "abc</dd>
-  <dd class=example>tulosta lowercase "ABC</dd>
+  <dd class=example>tulosta isolla "abc</dd>
+  <dd class=example>tulosta pienellä "ABC</dd>
 
   <!--
   <dt><code>standout <var>expr</var></code>
@@ -330,7 +330,7 @@ dd.example {
 
   <dt><code>listaksi <var>sana</var></code>
   <dd>Luo listan, jossa on erillisinä sanan kirjaimet.
-  <dd class=example>tulosta parse "1+2</dd>
+  <dd class=example>tulosta listaksi "1+2</dd>
 
   <!--
   <dt><code>runparse <var>word</var></code>
@@ -349,10 +349,10 @@ dd.example {
   <dd>Sanoo jutut tekstikenttään. Ei tulosta listojen ja rivien sulkeita.
   <dd class=example>sano "moikka</dd>
 
-  <dt><code>sanoalku <var>juttu</var></code>
-  <dt>(<code>sanoalku <var>juttu1</var> <var>juttu2</var> ...)</code>
+  <dt><code>sano.alku <var>juttu</var></code>
+  <dt>(<code>sano.alku <var>juttu1</var> <var>juttu2</var> ...)</code>
   <dd>Kuten <code>sano</code>, mutta perässä ei ole rivinvaihtoa.
-  <dd class=example>sanoalku "moik  sano "ka</dd>
+  <dd class=example>sano.alku "moik  sano "ka</dd>
 
   <dt><code>tulosta <var>juttu</var></code>
   <dt>(<code>tulosta <var>juttu1</var> <var>juttu2</var> ...)</code>
@@ -369,11 +369,11 @@ dd.example {
   <dd class=example>tulosta lue</dd>
   <dd class=example>olkoon "värit (lue [Kirjoita joitain värejä:])  tulosta :värit</dd>
 
-  <dt><code>luesana</code>
-  <dt><code>(luesana <var>kehote</var>)</code>
+  <dt><code>lue.sana</code>
+  <dt><code>(lue.sana <var>kehote</var>)</code>
   <dd>Kehota käyttäjää kirjoittamaan. Tekstistä tulee yksi sana.
-  <dd class=example>tulosta luesana</dd>
-  <dd class=example>olkoon "nimi (luesana [Mikä nimesi on?])  tulosta :nimi</dd>
+  <dd class=example>tulosta lue.sana</dd>
+  <dd class=example>olkoon "nimi (lue.sana [Mikä nimesi on?])  tulosta :nimi</dd>
 </dl>
 
 <!--
@@ -492,13 +492,13 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   <dt><code>suurempiko <var>luku1</var> <var>luku2</var></code>
   <dt><code><var>luku1</var> &gt; <var>luku2</var></code>
 
-  <dt><code>pienempi.tai.yhtäsuuriko <var>luku1</var> <var>luku2</var></code>
+  <dt><code>pienempi.tai.yhtä.suuriko <var>luku1</var> <var>luku2</var></code>
   <dt><code><var>luku1</var> &lt;= <var>luku2</var></code>
 
-  <dt><code>suurempi.tai.yhtäsuuriko <var>luku1</var> <var>luku2</var></code>
+  <dt><code>suurempi.tai.yhtä.suuriko <var>luku1</var> <var>luku2</var></code>
   <dt><code><var>luku1</var> &gt;= <var>luku2</var></code>
 
-  <dd>Kokeilee onko luku1 pienempi, suurempi, pienempi tai yhtäsuuri tai suurempi tai yhtäsuuri kuin luku2. Palauttaa joko joo (1) tai ei (0).
+  <dd>Kokeilee onko luku1 pienempi, suurempi, pienempi tai yhtä suuri tai suurempi tai yhtä suuri kuin luku2. Palauttaa joko joo (1) tai ei (0).
 </dl>
 
 <h4>4.3 Satunnaisluvut</h4>
@@ -557,12 +557,10 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   <dt><code>(joko.tai <var>juttu</var> <var>...</var>)</code>
   <dt><code>ei.että <var>juttu</var></code>
   <dd>Loogiset operaatiot "ja", "tai", "joko tai", and "ei", järjestyksessä.
-  Syötteet ovat numeroita, palaute on 1 (joo) tai 0 (ei).
+  Syötteet ovat numeroita, anne on 1 (joo) tai 0 (ei).
 </dl>
 
 <h3 id="sec6">6. Grafiikka</h3>
-
-<p>Johdatus ?grafiikkaan <a target="_blank" href="https://www.cs.berkeley.edu/~bh/v1ch10/turtle.html"></a>.</p>
 
 <h4>6.1 Kilpparin liikkuminen</h4>
 <dl>
@@ -630,11 +628,11 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
 <h4>6.3 Ikkunan näkymä</h4>
 <dl>
   <dt><code>näkyviin</code>
-  <dt><code>st</code>
+  <dt><code>nä</code>
   <dd>Kilpikonna tulee näkyviin.
 
   <dt><code>piiloon</code>
-  <dt><code>ht</code>
+  <dt><code>pi</code>
   <dd>Kilpikonna menee piiloon.
 
   <dt><code>pyyhi</code>
@@ -655,7 +653,7 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
 
   <dt><code>täytä.tässä</code>
   <dd>Täyttää yhtenäisen alueen kilpparin sijainnista kynän värillä.
-  <dd class=example>kaari 360 100  täytä</dd>
+  <dd class=example>kaari 360 100  täytä.tässä</dd>
 
   <dt><code>täytä.alue <var>täyttöväri</var> [ <var>komennot ...</var> ]</code>
   <dd>Suorittaa <var>komennot</var> piirtämättä mitään, mutta tallettaa kilpparin liikeen muistiin.
@@ -692,8 +690,8 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   <dt><code>lapun.koko</code>
   <dd>Antaa lapussa olevan tekstin korkeuden pikseleissä.
 
-  <dt><code>lapun.koko</code>
-  <dd>Palauttaa lapun tekstin korkeuden.
+  <dt><code>lapun.fontti</code>
+  <dd>Palauttaa lapun fontin.
 </dl>
 
 <h4>6.5 Kynän ja taustan hallinta</h4>
@@ -780,7 +778,7 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   <dd class=example>tulosta piirtääkö</dd>
 
   <dt><code>piirtotila</code>
-  <dd>Antaa <code>PAINT</code>, <code>ERASE</code> tai <code>REVERSE</code>
+  <dd>Antaa <code>PAINT</code> (maalaustila), <code>ERASE</code> (kumitustila) tai <code>REVERSE</code> (vastaväritila).
   <dd class=example>tulosta piirtotila</dd>
 
   <dt><code>väri</code>
@@ -1147,7 +1145,7 @@ Jakojäännös sailyttää ensimmäisen luvun etumerkin, modulo antaa aina posit
   <dd>Kuten <code>toista</code>, mutta käytyjen kierrosten määrä tallennetaan annettuun muuttujaan.</dd>
   <dd class=example>toi.muut [ i 5 ] [ tulosta :i * :i ]</dd>
 
-  <dt><code>do.tee.ja.jatka.kun [ <var>komennot ...</var>] <var>ehto</var></code>
+  <dt><code>tee.ja.jatka.kun [ <var>komennot ...</var>] <var>ehto</var></code>
   <dt><code>tjjkun [ <var>komennot ...</var>] <var>ehto</var></code>
   <dd>Suorittaa syötetyt komennot, minkä jälkeen jatkaa niin kauan, kun ehto on tosi (ei nolla). Ehdon voi antaa myös hakasulkeissa.
   <dd class=example>tjjkun [ olkoon "a satunnainen 10  tulosta :a ] :a < 8</dd>
