@@ -43,10 +43,10 @@ puu 150
 miten saniainen :koko [:suunta 1]
   jos :koko < 1 [ seis ]
   et :koko
-  oi 70 * :suunta saniainen :koko * 0.5 :suunta * -1 va 70 * :suunta
+  oi 70 * :suunta (saniainen :koko * 0.5 :suunta * -1) va 70 * :suunta
   et :koko
-  va 70 * :suunta saniainen :koko * 0.5 :suunta oi 70 * :suunta
-  oi 7 * :suunta saniainen :koko - 1 :suunta va 7 * :suunta
+  va 70 * :suunta (saniainen :koko * 0.5 :suunta) oi 70 * :suunta
+  oi 7 * :suunta (saniainen :koko - 1 :suunta) va 7 * :suunta
   ta :koko * 2
 valmis
 rajaton uusi äp ta 150 pä
