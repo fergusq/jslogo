@@ -1,0 +1,53 @@
+miten tähti
+  toista 5 [ et 100 oi 144 ]
+valmis
+uusi
+tähti
+
+miten neliö :koko
+  toista 4 [ et :koko oi 90 ]
+valmis
+miten satunnainen.väri
+  väriksi jokin [ roosa metsä meri myrkky jaffa magenta ]
+valmis
+uusi
+toista 36 [ satunnainen.väri neliö sat 200 oi 10 ]
+
+uusi rajaton piiloon
+toista 144 [
+  lapun.kooksi kerta
+  älä.piirrä
+  et kerta * kerta / 30
+  lappu "Logo
+  ta kerta * kerta / 30
+  piirrä
+  oi 10
+  odota 5
+]
+näkyviin
+
+miten puu :koko
+   jos :koko < 5 [eteen :koko taakse :koko seis]
+   eteen :koko/3
+   vasemmalle 30 puu :koko*2/3 oikealle 30
+   eteen :koko/6
+   oikealle 25 puu :koko/2 vasemmalle 25
+   eteen :koko/3
+   oikealle 25 puu :koko/2 vasemmalle 25
+   eteen :koko/6
+   taakse :koko
+valmis
+uusi
+puu 150
+
+miten saniainen :koko [:suunta 1]
+  jos :koko < 1 [ seis ]
+  et :koko
+  oi 70 * :suunta saniainen :koko * 0.5 :suunta * -1 va 70 * :suunta
+  et :koko
+  va 70 * :suunta saniainen :koko * 0.5 :suunta oi 70 * :suunta
+  oi 7 * :suunta saniainen :koko - 1 :suunta va 7 * :suunta
+  ta :koko * 2
+valmis
+rajaton uusi äp ta 150 pä
+saniainen 25 1
